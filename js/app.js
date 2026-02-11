@@ -17,15 +17,12 @@ let elements = {};
 
 function cacheElements() {
     elements = {
-        fileUpload: document.getElementById('file-upload'),
-        dropZone: document.getElementById('drop-zone'),
         uploadSection: document.getElementById('upload-section'),
         configSection: document.getElementById('config-section'),
         errorMessage: document.getElementById('error-message'),
         startScreen: document.getElementById('start-screen'),
         examScreen: document.getElementById('exam-screen'),
         summaryScreen: document.getElementById('summary-screen'),
-        selectedFile: document.getElementById('selected-file'),
         configFilename: document.getElementById('config-filename'),
         totalQuestions: document.getElementById('total-questions'),
         totalCategories: document.getElementById('total-categories'),
@@ -168,45 +165,10 @@ function renderFileSelector() {
         selectorHtml += `</div>`;
     }
     
-    selectorHtml += `
-            <div style="border-top: 1px solid #e0e0e0; padding-top: 20px; margin-top: 20px;">
-                <p style="color: #666; margin-bottom: 15px;">Or upload your own question file:</p>
-                <div class="file-input" id="drop-zone" style="margin: 0;">
-                    <p>📁 Click to select or drag & drop a JSON question file</p>
-                    <p id="selected-file" style="color: #666; margin-top: 10px;"></p>
-                    <input type="file" id="file-upload" accept=".json" style="display: none;">
-                </div>
-            </div>
-        </div>
-    `;
+    selectorHtml += `</div>`;
     
     // Replace the upload section content
     uploadSection.innerHTML = selectorHtml;
-    
-    // Re-attach event listeners for the drop zone
-    const dropZone = document.getElementById('drop-zone');
-    const fileUpload = document.getElementById('file-upload');
-    
-    if (dropZone && fileUpload) {
-        dropZone.addEventListener('click', () => fileUpload.click());
-        dropZone.addEventListener('dragover', (e) => {
-            e.preventDefault();
-            dropZone.classList.add('dragover');
-        });
-        dropZone.addEventListener('dragleave', () => {
-            dropZone.classList.remove('dragover');
-        });
-        dropZone.addEventListener('drop', (e) => {
-            e.preventDefault();
-            dropZone.classList.remove('dragover');
-            const files = e.dataTransfer.files;
-            if (files.length > 0) {
-                fileUpload.files = files;
-                handleFileSelect({ target: fileUpload });
-            }
-        });
-        fileUpload.addEventListener('change', handleFileSelect);
-    }
     
     // Make selectQuestionFile available globally
     window.selectQuestionFile = selectQuestionFile;
@@ -251,7 +213,7 @@ async function selectQuestionFile(filename) {
 function resetFileSelector() {
     uploadedFileData = null;
     elements.configSection.classList.add('hidden');
-    renderFileSelector();
+    elements.uploadSection.classList.remove('hidden');
     hideError();
 }
 
@@ -274,7 +236,6 @@ function setupEventListeners() {
     });
 
     // Global function assignments for inline event handlers
-    window.resetFile = resetFile;
     window.startExam = startExam;
     window.prevQuestion = prevQuestion;
     window.nextQuestion = nextQuestion;
@@ -283,49 +244,6 @@ function setupEventListeners() {
     window.toggleMarkQuestion = toggleMarkQuestion;
     window.startNewExam = startNewExam;
     window.toggleMarkFromSummaryButton = toggleMarkFromSummaryButton;
-}
-
-// ==================== File Upload Handlers ====================
-function handleFileSelect(event) {
-    const file = event.target.files[0];
-    if (!file) return;
-    
-    hideError();
-    
-    const reader = new FileReader();
-    reader.onload = function(e) {
-        try {
-            const content = e.target.result;
-            const questions = JSON.parse(content);
-            
-            if (!Array.isArray(questions) || questions.length === 0) {
-                throw new Error('Invalid question file: no questions found');
-            }
-            
-            const valid = questions.every(q => 
-                q.question_number && 
-                q.question_text && 
-                Array.isArray(q.options) && 
-                Array.isArray(q.correct_answers)
-            );
-            
-            if (!valid) {
-                throw new Error('Invalid question format: missing required fields');
-            }
-            
-            uploadedFileData = {
-                file: file,
-                questions: questions,
-                totalCount: questions.length
-            };
-            
-            showConfigSection();
-        } catch (err) {
-            showError('Error reading file: ' + err.message);
-            event.target.value = '';
-        }
-    };
-    reader.readAsText(file);
 }
 
 function getDisplayName(filename) {
@@ -412,10 +330,6 @@ function updateQuestionCountMax() {
     }
     
     elements.questionCountHelp.textContent = `Enter a number between 1 and ${totalSelected} (selected categories)`;
-}
-
-function resetFile() {
-    resetFileSelector();
 }
 
 function showError(message) {

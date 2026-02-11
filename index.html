@@ -30,11 +30,7 @@
             <h2 style="margin-bottom: 20px;">Start New Exam</h2>
             
             <div id="upload-section">
-                <div class="file-input" id="drop-zone">
-                    <p>📁 Click to select or drag & drop a JSON question file</p>
-                    <p id="selected-file" style="color: #666; margin-top: 10px;"></p>
-                    <input type="file" id="file-upload" accept=".json" style="display: none;">
-                </div>
+                <!-- File selector will be populated here by JavaScript -->
             </div>
             
             <div id="config-section" class="hidden">
@@ -78,10 +74,7 @@
                 </div>
                 
                 <div style="display: flex; gap: 10px;">
-                    <button class="btn btn-secondary" onclick="resetFile()" style="flex: 1;">
-                        ← Back
-                    </button>
-                    <button class="btn btn-primary" onclick="startExam()" style="flex: 2;">
+                    <button class="btn btn-primary" onclick="startExam()" style="flex: 1;">
                         Start Exam
                     </button>
                 </div>
