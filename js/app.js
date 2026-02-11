@@ -328,11 +328,21 @@ function handleFileSelect(event) {
     reader.readAsText(file);
 }
 
+function getDisplayName(filename) {
+    // Extract exam code like AI-102 or AZ-204 from filename
+    const nameWithoutExt = filename.replace('.json', '');
+    const parts = nameWithoutExt.split('-');
+    if (parts.length >= 2) {
+        return parts.slice(0, 2).join('-').toUpperCase();
+    }
+    return nameWithoutExt.toUpperCase();
+}
+
 function showConfigSection() {
     elements.uploadSection.classList.add('hidden');
     elements.configSection.classList.remove('hidden');
     
-    elements.configFilename.textContent = uploadedFileData.file.name;
+    elements.configFilename.textContent = getDisplayName(uploadedFileData.file.name);
     elements.totalQuestions.textContent = uploadedFileData.totalCount;
     
     const categories = populateCategories();
