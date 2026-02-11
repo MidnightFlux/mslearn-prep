@@ -332,7 +332,7 @@ function startExam(skipResumeCheck = false) {
     
     if (!skipResumeCheck) {
         const savedState = loadExamState();
-        if (savedState && savedState.filename === uploadedFileData.file.name) {
+        if (savedState) {
             showResumePrompt(savedState);
             return;
         }
