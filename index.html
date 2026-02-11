@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZH9HD36B8D"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'G-ZH9HD36B8D');
+    </script>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MSLearn Prep</title>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
+    <link rel="stylesheet" href="css/styles.css?v=2">
+</head>
+<body>
+    <div class="container">
+        <!-- ==================== Header ==================== -->
+        <div class="header">
+            <h1>📚 MSLearn Prep</h1>
+            <p>Client-Side Version - Runs entirely in your browser</p>
+        </div>
+        
+        <!-- ==================== Start Screen ==================== -->
+        <div id="start-screen" class="card">
+            <h2 style="margin-bottom: 20px;">Start New Exam</h2>
+            
+            <div id="upload-section">
+                <div class="file-input" id="drop-zone">
+                    <p>📁 Click to select or drag & drop a JSON question file</p>
+                    <p id="selected-file" style="color: #666; margin-top: 10px;"></p>
+                    <input type="file" id="file-upload" accept=".json" style="display: none;">
+                </div>
+            </div>
+            
+            <div id="config-section" class="hidden">
+                <div class="config-info">
+                    <p class="filename">📄 <span id="config-filename"></span></p>
+                    <p style="color: #666; font-size: 0.9rem;">
+                        Total questions available: <span id="total-questions" style="font-weight: 600; color: #333;">0</span>
+                        | Categories: <span id="total-categories" style="font-weight: 600; color: #333;">0</span>
+                    </p>
+                </div>
+                
+                <div style="margin-bottom: 20px;">
+                    <label style="display: block; margin-bottom: 8px; color: #333; font-weight: 500;">
+                        Number of questions to practice:
+                    </label>
+                    <input type="number" id="question-count" class="number-input" min="1" value="10">
+                    <p style="color: #666; font-size: 0.85rem; margin-top: 8px;" id="question-count-help">
+                        Enter a number between 1 and the selected categories
+                    </p>
+                </div>
+                
+                <label class="checkbox-label">
+                    <input type="checkbox" id="shuffle-checkbox" checked>
+                    <span>Shuffle questions randomly</span>
+                </label>
+                
+                <label class="checkbox-label">
+                    <input type="checkbox" id="shuffle-options-checkbox" checked>
+                    <span>Shuffle answer options randomly</span>
+                </label>
+                
+                <div class="category-section">
+                    <h4>📂 Select Question Categories:</h4>
+                    <div class="category-select-all">
+                        <input type="checkbox" id="select-all-categories" checked>
+                        <label for="select-all-categories" style="cursor: pointer;">Select All / Deselect All</label>
+                    </div>
+                    <div class="category-grid" id="category-grid">
+                        <!-- Categories will be populated here -->
+                    </div>
+                </div>
+                
+                <div style="display: flex; gap: 10px;">
+                    <button class="btn btn-secondary" onclick="resetFile()" style="flex: 1;">
+                        ← Back
+                    </button>
+                    <button class="btn btn-primary" onclick="startExam()" style="flex: 2;">
+                        Start Exam
+                    </button>
+                </div>
+            </div>
+            
+            <div id="error-message" class="hidden"></div>
+        </div>
+        
+        <!-- ==================== Exam Screen ==================== -->
+        <div id="exam-screen" class="hidden">
+            <div class="card">
+                <div id="selected-categories-display" style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #e0e0e0;">
+                    <div id="selected-categories-header" style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none;">
+                        <span style="color: #666; font-size: 0.9rem;">Categories</span>
+                        <span id="categories-toggle-icon" style="transition: transform 0.3s ease;">&#9662;</span>
+                    </div>
+                    <div id="selected-categories-list" class="categories-collapsed" style="font-weight: 500; color: #667eea; overflow: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; max-height: 0; opacity: 0;"></div>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+                <div class="progress-text" id="progress-text"></div>
+                
+                <div class="question-number" id="question-number"></div>
+                <div class="question-type" id="question-type"></div>
+                <div class="question-text" id="question-text"></div>
+                
+                <div class="options" id="options"></div>
+                
+                <div class="navigation">
+                    <button class="btn btn-primary" id="submit-btn" onclick="submitAnswer()">Submit Answer</button>
+                    <button class="btn btn-primary hidden" id="next-btn" onclick="nextQuestion()">Next →</button>
+                    <button class="btn btn-success hidden" id="finish-btn" onclick="finishExam()">Finish Exam</button>
+                </div>
+                <div style="text-align: center; margin-top: 15px;">
+                    <button class="btn btn-secondary" id="mark-btn" onclick="toggleMarkQuestion()" style="font-size: 0.9rem; padding: 10px 20px;">
+                        📌 Mark for Review
+                    </button>
+                </div>
+                <p style="text-align: center; color: #666; font-size: 0.85rem; margin-top: 15px;">
+                    💡 Use <strong>←</strong> and <strong>→</strong> arrow keys to navigate between questions
+                </p>
+            </div>
+            
+            <div id="feedback" class="card hidden"></div>
+            
+            <div class="card">
+                <h3 style="margin-bottom: 15px;">Question Navigator</h3>
+                <div class="question-grid" id="question-grid"></div>
+            </div>
+        </div>
+        
+        <!-- ==================== Summary Screen ==================== -->
+        <div id="summary-screen" class="hidden">
+            <div class="card">
+                <div id="pass-status" class="pass-status"></div>
+                
+                <div class="summary-stats">
+                    <div class="stat-card">
+                        <div class="stat-value" id="stat-total"></div>
+                        <div class="stat-label">Total Questions</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="stat-correct"></div>
+                        <div class="stat-label">Correct</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="stat-incorrect"></div>
+                        <div class="stat-label">Incorrect</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value" id="stat-percentage"></div>
+                        <div class="stat-label">Score</div>
+                    </div>
+                </div>
+                
+                <h3 style="margin-bottom: 15px;">Question Review</h3>
+                <div class="question-grid" id="summary-grid"></div>
+                
+                <div class="summary-buttons" style="margin-top: 30px; text-align: center;">
+                    <button class="btn btn-primary" onclick="startNewExam()">Start New Exam</button>
+                    <button class="btn btn-secondary" id="summary-mark-btn" onclick="toggleMarkFromSummaryButton()" style="margin-left: 10px; font-size: 0.9rem; padding: 10px 20px;">
+                        📌 Mark for Review
+                    </button>
+                </div>
+            </div>
+            
+            <div id="review-details"></div>
+        </div>
+    </div>
+
+    <script type="module" src="js/app.js?v=2"></script>
+</body>
+</html>
