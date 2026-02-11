@@ -653,3 +653,15 @@ body {
         margin-left: 0 !important;
     }
 }
+
+/* ==================== File Selector ==================== */
+.file-item {
+    transition: all 0.2s ease;
+}
+
+.file-item:hover {
+    border-color: #667eea !important;
+    background: #f8f9ff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.15);
+}

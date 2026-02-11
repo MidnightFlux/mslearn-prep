@@ -1,4 +1,4 @@
-import { ExamSession } from './exam-session.js?v=2';
+import { ExamSession } from './exam-session.js?v=3';
 
 // ==================== Constants ====================
 const STORAGE_KEY = 'exam-simulator-progress';
@@ -63,14 +63,161 @@ function cacheElements() {
 document.addEventListener('DOMContentLoaded', async () => {
     cacheElements();
     setupEventListeners();
-    await loadDefaultQuestions();
+    await loadAvailableQuestionFiles();
 });
 
-async function loadDefaultQuestions() {
+// Available question files
+let availableQuestionFiles = [];
+
+async function loadAvailableQuestionFiles() {
+    // Try to discover JSON files in sample-questions directory
+    // Since we can't list directory contents directly, we'll try common files
+    // and also check for an index.json that might list all available files
+    
+    const commonFiles = [
+        'ai-102-full.json',
+        'az-204-20260211.json'
+    ];
+    
+    // First try to load index.json if it exists
     try {
-        const response = await fetch('sample-questions/ai-102-full.json');
+        const indexResponse = await fetch('sample-questions/index.json');
+        if (indexResponse.ok) {
+            const index = await indexResponse.json();
+            if (Array.isArray(index.files)) {
+                availableQuestionFiles = index.files;
+                renderFileSelector();
+                return;
+            }
+        }
+    } catch (e) {
+        // index.json doesn't exist, continue with discovery
+    }
+    
+    // Try to discover files by fetching them
+    const discoveredFiles = [];
+    for (const filename of commonFiles) {
+        try {
+            const response = await fetch(`sample-questions/${filename}`, { method: 'HEAD' });
+            if (response.ok) {
+                discoveredFiles.push(filename);
+            }
+        } catch (e) {
+            // File doesn't exist, skip
+        }
+    }
+    
+    // Also try to find any other JSON files by checking common patterns
+    // This is a simple discovery mechanism - in production you might want
+    // to maintain an index.json file in the sample-questions directory
+    try {
+        const response = await fetch('sample-questions/');
+        if (response.ok) {
+            const text = await response.text();
+            // Parse directory listing if the server provides one
+            const jsonMatches = text.match(/href="([^"]*\.json)"/gi);
+            if (jsonMatches) {
+                jsonMatches.forEach(match => {
+                    const filename = match.replace(/href="([^"]*\.json)"/i, '$1');
+                    const cleanName = filename.replace(/^.*[\\/]/, '');
+                    if (!discoveredFiles.includes(cleanName)) {
+                        discoveredFiles.push(cleanName);
+                    }
+                });
+            }
+        }
+    } catch (e) {
+        // Directory listing not available
+    }
+    
+    availableQuestionFiles = discoveredFiles;
+    renderFileSelector();
+}
+
+function renderFileSelector() {
+    const uploadSection = elements.uploadSection;
+    
+    // Create file selector UI
+    let selectorHtml = `
+        <div id="file-selector" style="margin-bottom: 20px;">
+            <h3 style="margin-bottom: 15px; color: #333;">📚 Select a Question Bank</h3>
+    `;
+    
+    if (availableQuestionFiles.length === 0) {
+        selectorHtml += `
+            <p style="color: #666; margin-bottom: 15px;">No pre-loaded question files found.</p>
+        `;
+    } else {
+        selectorHtml += `<div class="file-list" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">`;
+        availableQuestionFiles.forEach((filename, index) => {
+            const displayName = filename.replace('.json', '').split('-').slice(0, 2).join('-').toUpperCase();
+            selectorHtml += `
+                <div class="file-item" onclick="selectQuestionFile('${filename}')" 
+                     style="padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; cursor: pointer; 
+                            transition: all 0.2s ease; display: flex; align-items: center; gap: 10px;
+                            hover: border-color: #667eea;">
+                    <span style="font-size: 1.5rem;">📄</span>
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; color: #333;">${displayName}</div>
+                        <div style="font-size: 0.85rem; color: #666;">${filename}</div>
+                    </div>
+                    <button class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;">Select</button>
+                </div>
+            `;
+        });
+        selectorHtml += `</div>`;
+    }
+    
+    selectorHtml += `
+            <div style="border-top: 1px solid #e0e0e0; padding-top: 20px; margin-top: 20px;">
+                <p style="color: #666; margin-bottom: 15px;">Or upload your own question file:</p>
+                <div class="file-input" id="drop-zone" style="margin: 0;">
+                    <p>📁 Click to select or drag & drop a JSON question file</p>
+                    <p id="selected-file" style="color: #666; margin-top: 10px;"></p>
+                    <input type="file" id="file-upload" accept=".json" style="display: none;">
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Replace the upload section content
+    uploadSection.innerHTML = selectorHtml;
+    
+    // Re-attach event listeners for the drop zone
+    const dropZone = document.getElementById('drop-zone');
+    const fileUpload = document.getElementById('file-upload');
+    
+    if (dropZone && fileUpload) {
+        dropZone.addEventListener('click', () => fileUpload.click());
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('dragover');
+        });
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('dragover');
+        });
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('dragover');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                fileUpload.files = files;
+                handleFileSelect({ target: fileUpload });
+            }
+        });
+        fileUpload.addEventListener('change', handleFileSelect);
+    }
+    
+    // Make selectQuestionFile available globally
+    window.selectQuestionFile = selectQuestionFile;
+}
+
+async function selectQuestionFile(filename) {
+    try {
+        hideError();
+        const response = await fetch(`sample-questions/${filename}`);
         if (!response.ok) {
-            throw new Error('Failed to load default questions');
+            throw new Error(`Failed to load ${filename}`);
         }
         const questions = await response.json();
         
@@ -90,37 +237,28 @@ async function loadDefaultQuestions() {
         }
         
         uploadedFileData = {
-            file: { name: 'ai-102-full.json' },
+            file: { name: filename },
             questions: questions,
             totalCount: questions.length
         };
         
         showConfigSection();
     } catch (err) {
-        console.log('Auto-load failed:', err.message);
+        showError('Error loading file: ' + err.message);
     }
 }
 
+function resetFileSelector() {
+    uploadedFileData = null;
+    elements.configSection.classList.add('hidden');
+    renderFileSelector();
+    hideError();
+}
+
 function setupEventListeners() {
-    // File upload
-    elements.fileUpload.addEventListener('change', handleFileSelect);
-    elements.dropZone.addEventListener('click', () => elements.fileUpload.click());
-    elements.dropZone.addEventListener('dragover', (e) => {
-        e.preventDefault();
-        elements.dropZone.classList.add('dragover');
-    });
-    elements.dropZone.addEventListener('dragleave', () => {
-        elements.dropZone.classList.remove('dragover');
-    });
-    elements.dropZone.addEventListener('drop', (e) => {
-        e.preventDefault();
-        elements.dropZone.classList.remove('dragover');
-        const files = e.dataTransfer.files;
-        if (files.length > 0) {
-            elements.fileUpload.files = files;
-            handleFileSelect({ target: elements.fileUpload });
-        }
-    });
+    // File upload - these elements are now dynamically rendered in renderFileSelector()
+    // Event listeners for them are attached there when the elements are created
+    // We keep the original elements references for other parts of the code that might use them
 
     // Keyboard navigation
     document.addEventListener('keydown', (e) => {
@@ -267,11 +405,7 @@ function updateQuestionCountMax() {
 }
 
 function resetFile() {
-    uploadedFileData = null;
-    elements.fileUpload.value = '';
-    elements.configSection.classList.add('hidden');
-    elements.uploadSection.classList.remove('hidden');
-    hideError();
+    resetFileSelector();
 }
 
 function showError(message) {
