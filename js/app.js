@@ -68,13 +68,7 @@ let availableQuestionFiles = [];
 
 async function loadAvailableQuestionFiles() {
     // Try to discover JSON files in sample-questions directory
-    // Since we can't list directory contents directly, we'll try common files
-    // and also check for an index.json that might list all available files
-    
-    const commonFiles = [
-        'ai-102-full.json',
-        'az-204-20260211.json'
-    ];
+    const discoveredFiles = [];
     
     // First try to load index.json if it exists
     try {
@@ -91,27 +85,12 @@ async function loadAvailableQuestionFiles() {
         // index.json doesn't exist, continue with discovery
     }
     
-    // Try to discover files by fetching them
-    const discoveredFiles = [];
-    for (const filename of commonFiles) {
-        try {
-            const response = await fetch(`sample-questions/${filename}`, { method: 'HEAD' });
-            if (response.ok) {
-                discoveredFiles.push(filename);
-            }
-        } catch (e) {
-            // File doesn't exist, skip
-        }
-    }
-    
-    // Also try to find any other JSON files by checking common patterns
-    // This is a simple discovery mechanism - in production you might want
-    // to maintain an index.json file in the sample-questions directory
+    // Try to discover JSON files by checking the directory listing
     try {
         const response = await fetch('sample-questions/');
         if (response.ok) {
             const text = await response.text();
-            // Parse directory listing if the server provides one
+            // Parse directory listing for .json files
             const jsonMatches = text.match(/href="([^"]*\.json)"/gi);
             if (jsonMatches) {
                 jsonMatches.forEach(match => {
