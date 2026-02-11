@@ -455,11 +455,15 @@ function showResumePrompt(savedState) {
     const totalCount = savedState.questions.length;
     const progressPercent = Math.round((answeredCount / totalCount) * 100);
     const isFinished = answeredCount >= totalCount;
+    const questionBankName = getDisplayName(savedState.filename);
     
     const resumeHtml = `
         <div id="resume-prompt" class="modal-overlay">
             <div class="modal-content">
                 <h3 style="margin-bottom: 15px; color: #333;">📚 Resume Previous Session?</h3>
+                <p style="margin-bottom: 10px; color: #333; font-weight: 600; font-size: 1.1rem;">
+                    ${questionBankName}
+                </p>
                 <p style="margin-bottom: 10px; color: #666; line-height: 1.5;">
                     ${isFinished 
                         ? `You have a <strong>completed</strong> exam from <strong>${new Date(savedState.timestamp).toLocaleString()}</strong>.`
