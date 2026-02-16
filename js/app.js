@@ -1,4 +1,4 @@
-import { ExamSession } from './exam-session.js?v=3';
+import { ExamSession } from './exam-session.js?v=4';
 
 // ==================== Constants ====================
 const STORAGE_KEY = 'exam-simulator-progress';
@@ -56,12 +56,7 @@ function cacheElements() {
     };
 }
 
-// ==================== Initialization ====================
-document.addEventListener('DOMContentLoaded', async () => {
-    cacheElements();
-    setupEventListeners();
-    await loadAvailableQuestionFiles();
-});
+
 
 // Available question files
 let availableQuestionFiles = [];
@@ -115,29 +110,28 @@ function renderFileSelector() {
     
     // Create file selector UI
     let selectorHtml = `
-        <div id="file-selector" style="margin-bottom: 20px;">
-            <h3 style="margin-bottom: 15px; color: #333;">📚 Select a Question Bank</h3>
+        <div id="file-selector" style="margin-bottom: var(--space-lg);">
+            <h3 style="margin-bottom: var(--space-md); color: var(--color-text-primary);">📚 Select a Question Bank</h3>
     `;
     
     if (availableQuestionFiles.length === 0) {
         selectorHtml += `
-            <p style="color: #666; margin-bottom: 15px;">No pre-loaded question files found.</p>
+            <p style="color: var(--color-text-secondary); margin-bottom: var(--space-md);">No pre-loaded question files found.</p>
         `;
     } else {
-        selectorHtml += `<div class="file-list" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">`;
+        selectorHtml += `<div class="file-selector">`;
         availableQuestionFiles.forEach((filename, index) => {
             const displayName = filename.replace('.json', '').split('-').slice(0, 2).join('-').toUpperCase();
             selectorHtml += `
-                <div class="file-item" onclick="selectQuestionFile('${filename}')" 
-                     style="padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; cursor: pointer; 
-                            transition: all 0.2s ease; display: flex; align-items: center; gap: 10px;
-                            hover: border-color: #667eea;">
-                    <span style="font-size: 1.5rem;">📄</span>
-                    <div style="flex: 1;">
-                        <div style="font-weight: 600; color: #333;">${displayName}</div>
-                        <div style="font-size: 0.85rem; color: #666;">${filename}</div>
+                <div class="file-item" onclick="selectQuestionFile('${filename}')">
+                    <div class="file-item-info">
+                        <span class="file-item-icon">📄</span>
+                        <div>
+                            <div class="file-item-name">${displayName}</div>
+                            <div class="file-item-meta">${filename}</div>
+                        </div>
                     </div>
-                    <button class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;">Select</button>
+                    <span class="file-item-badge">Select</span>
                 </div>
             `;
         });
@@ -223,6 +217,9 @@ function setupEventListeners() {
     window.toggleMarkQuestion = toggleMarkQuestion;
     window.startNewExam = startNewExam;
     window.toggleMarkFromSummaryButton = toggleMarkFromSummaryButton;
+    window.handleOptionChange = handleOptionChange;
+    window.toggleOption = toggleOption;
+    window.goToQuestion = goToQuestion;
 }
 
 function getDisplayName(filename) {
@@ -460,17 +457,17 @@ function showResumePrompt(savedState) {
     const resumeHtml = `
         <div id="resume-prompt" class="modal-overlay">
             <div class="modal-content">
-                <h3 style="margin-bottom: 15px; color: #333;">📚 Resume Previous Session?</h3>
-                <p style="margin-bottom: 10px; color: #333; font-weight: 600; font-size: 1.1rem;">
+                <h3 style="margin-bottom: 15px; color: var(--color-text-primary);">📚 Resume Previous Session?</h3>
+                <p style="margin-bottom: 10px; color: var(--color-text-primary); font-weight: 600; font-size: 1.1rem;">
                     ${questionBankName}
                 </p>
-                <p style="margin-bottom: 10px; color: #666; line-height: 1.5;">
+                <p style="margin-bottom: 10px; color: var(--color-text-secondary); line-height: 1.5;">
                     ${isFinished 
                         ? `You have a <strong>completed</strong> exam from <strong>${new Date(savedState.timestamp).toLocaleString()}</strong>.`
                         : `You have an unfinished exam from <strong>${new Date(savedState.timestamp).toLocaleString()}</strong>.`
                     }
                 </p>
-                <p style="margin-bottom: 20px; color: #667eea; font-weight: 500;">
+                <p style="margin-bottom: 20px; color: var(--color-accent); font-weight: 600;">
                     ${isFinished 
                         ? `All ${totalCount} questions completed (${progressPercent}%)`
                         : `Progress: ${answeredCount}/${totalCount} answered (${progressPercent}%)`
@@ -606,11 +603,11 @@ function showSummaryFromSession() {
 // ==================== UI Rendering ====================
 function renderSelectedCategories() {
     if (selectedCategoriesList.length > 0) {
-        elements.selectedCategoriesList.innerHTML = '<ul style="margin: 0; padding-left: 20px; color: #667eea;">' +
+        elements.selectedCategoriesList.innerHTML = '<ul style="margin: 0; padding-left: 20px; color: var(--color-primary);">' +
             selectedCategoriesList.map(cat => `<li style="margin-bottom: 4px;">${cat}</li>`).join('') +
             '</ul>';
     } else {
-        elements.selectedCategoriesList.innerHTML = '<span style="margin-left: 0;">All</span>';
+        elements.selectedCategoriesList.innerHTML = '<span style="margin-left: 0; color: var(--color-text-secondary);">All Categories</span>';
     }
     
     elements.selectedCategoriesHeader.onclick = toggleCategories;
@@ -841,8 +838,14 @@ function updateMarkButton() {
     
     const isMarked = examSession.isMarked(question.question_number);
     elements.markBtn.innerHTML = isMarked ? '📌 Unmark Question' : '📌 Mark for Review';
-    elements.markBtn.style.background = isMarked ? '#ff9800' : '#f5f5f5';
-    elements.markBtn.style.color = isMarked ? 'white' : '#666';
+    
+    if (isMarked) {
+        elements.markBtn.classList.add('btn-accent');
+        elements.markBtn.classList.remove('btn-secondary');
+    } else {
+        elements.markBtn.classList.add('btn-secondary');
+        elements.markBtn.classList.remove('btn-accent');
+    }
 }
 
 // ==================== Question Navigation ====================
@@ -1003,8 +1006,14 @@ function showReviewDetail(q, result, userAnswer, displayNumber) {
 function updateSummaryMarkButton(isMarked) {
     if (elements.summaryMarkBtn) {
         elements.summaryMarkBtn.innerHTML = isMarked ? '📌 Unmark Question' : '📌 Mark for Review';
-        elements.summaryMarkBtn.style.background = isMarked ? '#ff9800' : '#f5f5f5';
-        elements.summaryMarkBtn.style.color = isMarked ? 'white' : '#666';
+        
+        if (isMarked) {
+            elements.summaryMarkBtn.classList.add('btn-accent');
+            elements.summaryMarkBtn.classList.remove('btn-secondary');
+        } else {
+            elements.summaryMarkBtn.classList.add('btn-secondary');
+            elements.summaryMarkBtn.classList.remove('btn-accent');
+        }
     }
 }
 
@@ -1050,6 +1059,44 @@ function refreshSummaryGrid() {
         elements.summaryGrid.appendChild(dot);
     });
 }
+
+// ==================== Theme Toggle ====================
+function initThemeToggle() {
+    const lightBtn = document.getElementById('theme-light');
+    const darkBtn = document.getElementById('theme-dark');
+    
+    if (!lightBtn || !darkBtn) return;
+    
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    updateThemeButtons(currentTheme);
+    
+    lightBtn.addEventListener('click', () => setTheme('light'));
+    darkBtn.addEventListener('click', () => setTheme('dark'));
+}
+
+function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('mslearn-theme', theme);
+    updateThemeButtons(theme);
+}
+
+function updateThemeButtons(activeTheme) {
+    const lightBtn = document.getElementById('theme-light');
+    const darkBtn = document.getElementById('theme-dark');
+    
+    if (lightBtn && darkBtn) {
+        lightBtn.classList.toggle('active', activeTheme === 'light');
+        darkBtn.classList.toggle('active', activeTheme === 'dark');
+    }
+}
+
+// ==================== Initialization ====================
+document.addEventListener('DOMContentLoaded', async () => {
+    cacheElements();
+    initThemeToggle();
+    setupEventListeners();
+    await loadAvailableQuestionFiles();
+});
 
 // Global assignments for inline handlers
 window.startNewFromPrompt = startNewFromPrompt;
