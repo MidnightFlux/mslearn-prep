@@ -1,0 +1,2277 @@
+[
+  {
+    "question_text": "You are building an app that will enable users to create notes by using speech.\r\n\r\nYou need to recommend the Azure Speech in Foundry Tools service model to use. The solution must support noisy environments.\r\n\r\nWhich model should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "base",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "base with customizations",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "custom speech-to-text",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "default",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "c"
+    ],
+    "explanation": "The custom speech-to-text model is correct, as you need to adapt the model because a factory floor might have ambient noise, which the model should be trained on.\r\n\r\nSpeech-to-text FAQ - Azure Cognitive Services | Microsoft Learn\r\n\r\nCreate speech-enabled apps with the Speech service - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/speech-service/faq-stt",
+      "https://learn.microsoft.com/training/modules/transcribe-speech-input-text/"
+    ],
+    "category": "Implement natural language processing solutions",
+    "question_number": 1
+  },
+  {
+    "question_text": "You are building a mobile app that will enable users to scan street signs and will read out the text on the sign.\r\n\r\nYou need to recommend a service to use. The solution must minimize development effort.\r\n\r\nWhich service should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Azure Vision in Foundry Tools",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "Azure AI Custom Vision",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Azure Face in Foundry Tools service",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Azure Document Intelligence in Foundry Tools",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "explanation": "Azure Vision in Foundry Tools is the only service which can achieve the desired result.\r\n\r\nAzure AI Custom Vision and Azure AI Face do not offer OCR. Azure Document Intelligence in Foundry Tools is designed for documents, but not images. \r\n\r\nOCR - Optical Character Recognition - Azure Cognitive Services | Microsoft Learn\r\n\r\nRead Text in Images and Documents with the Computer Vision Service - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/computer-vision/overview-ocr",
+      "https://learn.microsoft.com/training/modules/read-text-images-documents-with-computer-vision-service/"
+    ],
+    "category": "Plan and manage an Azure AI solution",
+    "question_number": 2
+  },
+  {
+    "question_text": "You are building an app that will use Azure AI Custom Vision to analyze and classify images to build an image library of animals.\r\n\r\nYou need to configure the classification type for the Azure AI Custom Vision project. The solution must ensure that the images selected only include a single animal.\r\n\r\nWhich type of classification should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "multiclass",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "multilabel",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "singleclass",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "singlelabel",
+        "is_correct": false
+      },
+      {
+        "letter": "e",
+        "text": "unilabel",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "explanation": "Multilabel classification applies any number of tags to an image (zero or more), while multiclass classification sorts images into single categories (every image you submit will be sorted into the most likely tag). Therefore, using multilabel means that one image can be tagged as both “cat” and “dog” at the same time, although it should be either/or.\r\n\r\nQuickstart: Build an image classification model with the Custom Vision portal - Azure Cognitive Services | Microsoft Learn\r\n\r\nClassify images - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/getting-started-build-a-classifier",
+      "https://learn.microsoft.com/training/modules/classify-images/"
+    ],
+    "category": "Implement computer vision solutions",
+    "question_number": 3
+  },
+  {
+    "question_text": "Your organization scans and stores various document types, such as invoices, receipts, and custom forms, in PDF format.  \r\n  \r\nYou need to extract structured information from these documents for analysis.  \r\n  \r\nEach correct answer presents part of the solution. Which two actions should you take?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Convert the documents into plain text.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Train a custom model using labeled datasets in Azure Document Intelligence in Foundry Tools.",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Use the General Document model in Azure Document Intelligence in Foundry Tools.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Use the Layout model in Azure Document Intelligence in Foundry Tools.",
+        "is_correct": false
+      },
+      {
+        "letter": "e",
+        "text": "Use the prebuilt Invoice model in Azure Document Intelligence in Foundry Tools.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "b",
+      "e"
+    ],
+    "explanation": "Converting the documents into plain text results in the loss of structural information, which is essential for extracting meaningful data. Training a custom model using labeled datasets in Azure Document Intelligence in Foundry Tools enables accurate extraction of data from unique forms that do not conform to standard templates. The General Document model is deprecated and not recommended for use in new solutions, making it unsuitable for this task. The Layout model can extract text and structure but is not optimized for specific document types like invoices or receipts, which limits its effectiveness for this scenario. The prebuilt Invoice model in Azure Document Intelligence in Foundry Tools is specifically designed to extract key information from invoices, making it an appropriate choice for this task.  \r\n  \r\nGet started with Azure Document Intelligence - Training | Microsoft Learn  \r\nChoose a model type - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/en-us/training/modules/work-form-recognizer/3-get-started",
+      "https://learn.microsoft.com/en-us/training/modules/plan-form-recognizer-solution/4-choose-model-type"
+    ],
+    "category": "Implement knowledge mining and information extraction solutions",
+    "question_number": 4
+  },
+  {
+    "question_text": "You have a set of JPEG, PNG, and TIFF files that contain photos of documents. The documents contain structured data in tables.\r\n\r\nYou plan to use the layout model in Azure Document Intelligence in Foundry Tools to extract the tables from the files.\r\n\r\nYou need to extract the tables from the files by using the layout model. The solution must **NOT** require model training.\r\n\r\nWhich three methods can you use? Each correct answer presents a complete solution.",
+    "options": [
+      {
+        "letter": "a",
+        "text": "a client library SDK",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "a prebuilt model",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "a REST API",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "the Document Intelligence Studio",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "a",
+      "c",
+      "d"
+    ],
+    "explanation": "You can extract tables from document images by using the Azure Document Intelligence layout model without any model training by invoking it through supported access methods, including a client library SDK, the REST API, or the Document Intelligence Studio. The client library SDK and REST API allow you to programmatically call the prebuilt layout model (modelId = prebuilt-layout) to extract tables and structural information from JPEG, PNG, and TIFF files, while Document Intelligence Studio provides a no-code, graphical experience to upload documents and run the same layout model interactively. A prebuilt model itself is not a method of extraction but rather the type of model being used, so it does not represent a complete solution on its own.  \r\n\r\nWhat is Azure Document Intelligence?\r\n\r\nUse the Azure Document Intelligence Studio\r\n\r\nRetrieval-Augmented Generation with Azure Document Intelligence in Foundry Tools",
+    "references": [
+      "https://learn.microsoft.com/en-us/training/modules/work-form-recognizer/2-what-form-recognizer",
+      "https://learn.microsoft.com/en-us/training/modules/work-form-recognizer/9-form-recognizer-studio",
+      "https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/concept/retrieval-augmented-generation?view=doc-intel-4.0.0"
+    ],
+    "category": "Implement knowledge mining and information extraction solutions",
+    "question_number": 5
+  },
+  {
+    "question_text": "You have an app named App1 that analyzes social media mentions and determines whether comments are positive or negative.\r\n\r\nDuring testing, you notice that App1 generates negative sentiment analysis in response to customer feedback that contains positive feedback. \r\n\r\nYou need to ensure that App1 includes more granular information during the analysis.\r\n\r\nWhat should you add to the API requests?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "`loggingOptOut=true`",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "`StringIndexType=TextElements_v8`",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "`opinionMining=true`",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "c"
+    ],
+    "explanation": "`opinionMining=true` will add aspect-based sentiment analysis, which in turn will make the sentiment more granular so that positive and negative in a single sentence can be returned. \r\n\r\n`loggingOptOut=true` will opt out of logging and `StringIndexType=TextElements_v8` will set the returned offset and length values to correspond with `TextElements`.\r\n\r\nText Analysis Runtime - Analyze Text - REST API (Azure Cognitive Services - Language) | Microsoft Learn\r\n\r\nHow to perform sentiment analysis and opinion mining - Azure Cognitive Services | Microsoft Learn\r\n\r\nExtract insights from text with the Language service - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/rest/api/language/text-analysis-runtime/analyze-text?view=rest-language-2023-04-01&tabs=HTTP",
+      "https://learn.microsoft.com/azure/cognitive-services/language-service/sentiment-opinion-mining/how-to/call-api",
+      "https://learn.microsoft.com/training/modules/extract-insights-text-with-text-analytics-service/"
+    ],
+    "category": "Implement natural language processing solutions",
+    "question_number": 6
+  },
+  {
+    "question_text": "You are building a solution that uses Azure AI Search.\r\n\r\nYou need to define the field attributes for a field where the search results will include a hit count by category. \r\n\r\nWhich attribute should you assign to the field?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "`facetable`",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "`filterable `",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "`key`",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "explanation": "`facetable` is typically used in a presentation of search results that includes a hit count by category.\r\n\r\n`Filterable` is referenced in `$filter` queries, and `key` is a unique identifier for documents within the index. \r\n\r\nIndex overview - Azure Cognitive Search | Microsoft Learn\r\n\r\nCreate an Azure Cognitive Search solution - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/search/search-what-is-an-index",
+      "https://learn.microsoft.com/training/modules/create-azure-cognitive-search-solution/"
+    ],
+    "category": "Implement knowledge mining and information extraction solutions",
+    "question_number": 7
+  },
+  {
+    "question_text": "You are building an app named App1 that uses the Image Analysis API.\r\n\r\nYou are evaluating analyzing images by using the following request.\r\n\r\n`https://*.cognitiveservices.azure.com/computervision/imageanalysis:analyze? features=read,description`\r\n\r\nWhich results will the request return?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "a description of the image content only",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "the visible text in the image and a description of the image content",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "which objects there are in the image and their approximate location",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "explanation": "The features used in the call are `read` and `description`, which will return the visible text in the image, as well as a description of the image content.\r\n\r\nTo return the objects that are in the image and their approximate location, the feature used in the call should be `objects`. To return a description of the image content only, the feature `description` should be used alone.\r\n\r\nCall the Image Analysis API - Azure Cognitive Services | Microsoft Learn\r\n\r\nRead Text in Images and Documents with the Computer Vision Service - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/computer-vision/how-to/call-analyze-image?tabs=rest",
+      "https://learn.microsoft.com/training/modules/read-text-images-documents-with-computer-vision-service/"
+    ],
+    "category": "Implement computer vision solutions",
+    "question_number": 8
+  },
+  {
+    "question_text": "You are building an app that will recognize the intent and entities of user utterances in real-time. \r\n\r\nYou are evaluating the use of intent recognition with the Azure Speech in Foundry Tools and Azure Language in Foundry Tools services or simple pattern matching.\r\n\r\nWhen should you use pattern matching?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "You are only interested in matching strictly what the user said.",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "You must manage the model by using a web app.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "You must use a machine learned entity.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "You must use a prebuilt entity.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "explanation": "The only option is to use pattern matching over Language Understanding when you want to strictly match what a user said, as the incorrect options are only available in Language Understanding.\r\n\r\nHow to recognize intents with custom entity pattern matching - Azure Cognitive Services | Microsoft Learn\r\n\r\nCreate speech-enabled apps with the Speech service - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/speech-service/how-to-use-custom-entity-pattern-matching?tabs=jre%2Cwindows%2Cubuntu%2Cmaven&pivots=programming-language-csharp",
+      "https://learn.microsoft.com/training/modules/transcribe-speech-input-text/"
+    ],
+    "category": "Implement natural language processing solutions",
+    "question_number": 9
+  },
+  {
+    "question_text": "You are building a multilingual conversational app by using Conversational Language Understanding (CLU), part of Azure Language in Foundry Tools service.\r\n\r\nYou create a CLU model that will serve multiple languages.\r\n\r\nYou need to optimize the performance of the model. The solution must minimize development effort.\r\n\r\nWhat should you do?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Add utterances for languages that are performing poorly in the model.",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "Configure the app to only query utterances in the language that was used to train the model.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Create separate projects for each language.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Train the model by using utterances in multiple languages and only query the model by using the project language.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "explanation": "With CLU, there is no need to use multiple projects for a model. For example, you can train a model in English and query it in German. There is no project language, therefore, adding utterances for languages in the model that are performing poorly is the appropriate solution to increase performance.\r\n\r\nMultilingual projects - Azure Cognitive Services | Microsoft Learn\r\n\r\nBuild a Language Understanding model - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/language-service/conversational-language-understanding/concepts/multiple-languages",
+      "https://learn.microsoft.com/training/modules/build-language-understanding-model/"
+    ],
+    "category": "Implement natural language processing solutions",
+    "question_number": 10
+  },
+  {
+    "question_text": "You use an Azure OpenAI in Foundry Models service to generate content for customer support chatbots. The deployed model is set to auto-update to a default version.  \r\n  \r\nYou need to ensure consistent chatbot behavior during model updates and test new versions before deployment.  \r\n  \r\nWhich two actions should you take to meet these requirements? Each correct answer presents part of the solution.",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Disable automatic updates.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Enable updates to the default version.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Increase deployment resources.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Select a specific model version.",
+        "is_correct": true
+      },
+      {
+        "letter": "e",
+        "text": "Test new versions separately.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d",
+      "e"
+    ],
+    "explanation": "Disabling automatic updates results in outdated models, which negatively impact performance and security. Enabling updates to the default version applies new updates without prior testing, leading to potential inconsistencies in chatbot behavior. Increasing deployment resources does not address consistent chatbot behavior or testing of new model versions. Selecting a specific model version ensures consistent chatbot behavior by allowing manual control over updates and testing. Testing new versions in a separate deployment identifies and resolves issues before they affect the main chatbot, ensuring controlled updates and consistent behavior.  \r\n  \r\nExplore image-generation models in Azure AI Foundry portal  \r\nMonitor Azure resources with Azure Monitor",
+    "references": [
+      "https://learn.microsoft.com/en-us/training/modules/generate-images-azure-openai/3-dall-e-in-openai-studio",
+      "https://learn.microsoft.com/en-us/training/modules/monitor-ai-services/2-monitor-cost"
+    ],
+    "category": "Implement generative AI solutions",
+    "question_number": 11
+  },
+  {
+    "question_text": "Your company receives multi-page PDF documents from clients containing specifications and statements of work, often including tables and selection marks.  \r\n  \r\nYou need to extract text, tables, and selection marks while maintaining the document's structure.  \r\n  \r\nWhat should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Azure Vision in Foundry Tools OCR (Optical Character Recognition)",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Azure Document Intelligence general model",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Azure Document Intelligence layout model",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "Azure Document Intelligence read model",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "c"
+    ],
+    "explanation": "Azure Document Intelligence layout model is the most appropriate solution because it is specifically designed to extract text, tables, and selection marks while preserving the document's structure, which is essential for processing multi-page PDF documents. Azure Vision in Foundry Tools OCR is limited to text extraction from images and does not support advanced features like table or selection mark recognition. The general model supports entity extraction but does not focus on maintaining the document's structure. The read model is limited to extracting printed and handwritten text and does not include the advanced capabilities required for this scenario.  \r\n  \r\nWhat is Azure Document Intelligence? - Training | Microsoft Learn  \r\nUse the General Document, Read, and Layout models - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/en-us/training/modules/work-form-recognizer/2-what-form-recognizer",
+      "https://learn.microsoft.com/en-us/training/modules/use-prebuilt-form-recognizer-models/3-use-general-document-read-layout-models \"Use the General Document, Read, and Layout models - Training | Microsoft Learn\""
+    ],
+    "category": "Implement knowledge mining and information extraction solutions",
+    "question_number": 12
+  },
+  {
+    "question_text": "You have an Azure Document Intelligence in Foundry Tools resource.\r\n\r\nYou need to use the resource in the Document Intelligence Studio to extract key-value pairs, selection marks, and tables from documents.\r\n\r\nWhat should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "a custom model",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "the general document model",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "the layout model",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "the receipt model",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "explanation": "You should use the general document model because it is designed to extract key-value pairs, selection marks, tables, and other common entities from a wide variety of document types in Azure Document Intelligence Studio without requiring custom training. Custom models are intended for highly specialized or organization-specific document formats and require training, the layout model focuses on extracting text, tables, and structural layout information rather than rich key-value semantics, and the receipt model is limited to receipt-specific fields and scenarios, making it unsuitable for general-purpose document extraction.\r\n\r\nUse the Azure Document Intelligence Studio\r\n\r\nExtract information from forms with Azure Document Intelligence",
+    "references": [
+      "https://learn.microsoft.com/en-us/training/modules/work-form-recognizer/9-form-recognizer-studio",
+      "https://learn.microsoft.com/en-us/training/modules/ai-information-extraction/5-document-intelligence"
+    ],
+    "category": "Implement knowledge mining and information extraction solutions",
+    "question_number": 13
+  },
+  {
+    "question_text": "You are building an app that will use Azure Vision in Foundry Tools to extract text from scanned images of handwritten text.\r\n\r\nWhich Azure Vision in Foundry Tools feature should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Azure AI Custom Vision",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "handwriting analysis",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Image Analysis",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "optical character recognition (OCR)",
+        "is_correct": true
+      },
+      {
+        "letter": "e",
+        "text": "Spatial Analysis",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "explanation": "OCR is the only visual feature that can extract text from images. \r\n\r\nWhat is Computer Vision? - Azure Cognitive Services | Microsoft Learn\r\n\r\nRead Text in Images and Documents with the Computer Vision Service - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/computer-vision/overview",
+      "https://learn.microsoft.com/training/modules/read-text-images-documents-with-computer-vision-service/"
+    ],
+    "category": "Implement computer vision solutions",
+    "question_number": 14
+  },
+  {
+    "question_text": "You are building a video processing app that will use Azure AI Video Indexer. \r\n\r\nYou need to configure the training and learning phases for the app. The solution must train the model based on the probability of specific word combinations by using a custom Language model.\r\n\r\nWhich three practices should be followed for the training data? Each correct answer presents a complete solution.",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Include at least 500,000 sentences.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Include multiple examples of spoken sentences.",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Include special characters such as ~, #, @, %, and &.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Provide multiple adaptation options.",
+        "is_correct": true
+      },
+      {
+        "letter": "e",
+        "text": "Put only one sentence per line.",
+        "is_correct": true
+      },
+      {
+        "letter": "f",
+        "text": "Repeat the identical sentence multiple times.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b",
+      "d",
+      "e"
+    ],
+    "explanation": "When training the model, you should avoid repeating an identical sentence multiple times, as it may create bias against the rest of the input.\r\n\r\nYou should avoid including uncommon symbols (~, # @ % &), as they will be discarded. The sentences in which they appear will also be discarded.\r\n\r\nYou should also avoid putting inputs that are too large, such as hundreds of thousands of sentences, because doing so will dilute the effect of boosting.\r\n\r\nCustomize a Language model in Azure Video Indexer - Azure - Azure Video Indexer | Microsoft Learn\r\n\r\nAnalyze video - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/azure-video-indexer/customize-language-model-overview",
+      "https://learn.microsoft.com/training/modules/analyze-video/"
+    ],
+    "category": "Implement computer vision solutions",
+    "question_number": 15
+  },
+  {
+    "question_text": "You are creating a model to detect animals in wildlife images.  \r\n  \r\nYou need to train a model that identifies and locates animals efficiently.  \r\n  \r\nWhat should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Build a CNN model by using Azure Machine Learning.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Train a classification model by using Azure Custom Vision.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Use Azure Custom Vision to train an object detection model.",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "Use the prebuilt image tagging model in Azure Vision in Foundry Tools.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "c"
+    ],
+    "explanation": "Using Azure Custom Vision to train an object detection model is the optimal choice because it meets the requirements for identifying and locating animals in wildlife images. Building a CNN model by using Azure Machine Learning is resource-intensive and unnecessary given the availability of Azure Custom Vision. Training a classification model by using Azure Custom Vision does not provide localization information, which is essential for this task. Using the prebuilt image tagging model in Azure Vision in Foundry Tools lacks customization and localization capabilities, making it unsuitable for this scenario.\\  \r\n  \r\nEnrich a search index in Azure AI Search with custom classes and Azure Language in Foundry Tools - Training | Microsoft Learn  \r\nGet started with Azure Document Intelligence - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/en-us/training/modules/enrich-search-index-using-language-studio/03-enrich-cognitive-search-index-custom-classes",
+      "https://learn.microsoft.com/en-us/training/modules/work-form-recognizer/3-get-started"
+    ],
+    "category": "Implement computer vision solutions",
+    "question_number": 16
+  },
+  {
+    "question_text": "Your organization plans to develop an AI solution using Microsoft Microsoft Foundry Agent Service to automate customer support workflows.  \r\n  \r\nYou need to configure the agent to interact with external data sources and execute actions based on user queries.  \r\n  \r\nEach correct answer presents part of the solution. Which two actions should you perform?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Add Bing search tools in the agent configuration.",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "Configure Azure Functions in the agent configuration file.",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Deploy a containerized image.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Set up a SQL database.",
+        "is_correct": false
+      },
+      {
+        "letter": "e",
+        "text": "Use Computer Vision.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a",
+      "b"
+    ],
+    "explanation": "Adding Bing search tools enables the agent to retrieve relevant information from external sources, enhancing its ability to respond accurately to user queries. Configuring Azure Functions allows the agent to execute specific actions programmatically, which is crucial for automating workflows based on user inputs. Deploying a containerized image is not necessary to configure the agent's capabilities. Setting up a SQL database is not required for configuring the agent's interaction capabilities, as it does not directly contribute to the goal of automating customer support workflows. Using Computer Vision is unrelated to the task of configuring the agent for customer support workflows, as it focuses on image analysis rather than interaction with external data sources.  \r\n  \r\nDevelop an AI agent with Microsoft Foundry Agent Service - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-azure/"
+    ],
+    "category": "Implement an agentic solution",
+    "question_number": 17
+  },
+  {
+    "question_text": "You have a Microsoft Foundry service.\r\n\r\nYou plan to create an agent that will automate the sending of expense report emails to employees. The solution will use multiple types of agents to support the workflow.\r\n\r\nYou need to create the agent while minimizing administrative effort.\r\n\r\nWhat should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "the Azure AI Agent Service SDK",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "the Microsoft Foundry portal",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "the Microsoft Foundry REST API",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "the Microsoft Foundry SDK",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "explanation": "The Microsoft Foundry portal is the best choice because it provides a graphical, no-code interface to create, configure, and test multiple types of agents directly within the Foundry service, which minimizes administrative and development effort. The Microsoft Foundry SDK and Azure AI Agent Service SDK are designed for developers who need programmatic control and advanced orchestration, which increases setup and maintenance overhead, while the Microsoft Foundry REST API requires scripting and endpoint management, making it less suitable when the goal is to quickly create and manage agents with minimal administrative effort.  \r\n\r\nIntroduction\r\n\r\nIntroduction",
+    "references": [
+      "https://learn.microsoft.com/en-us/training/modules/ai-foundry-sdk/01-introduction",
+      "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-with-semantic-kernel/1-introduction"
+    ],
+    "category": "Plan and manage an Azure AI solution",
+    "question_number": 18
+  },
+  {
+    "question_text": "Your organization processes sensitive documents, such as contracts and invoices, and must comply with data privacy regulations.  \r\n  \r\nYou need to use Microsoft Azure Document Intelligence in Foundry Tools to automate structured data extraction from these documents.  \r\n  \r\nEach correct answer presents part of the solution. Which two actions should you perform?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Configure an Azure AI Search resource.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Manually preprocess documents to remove sensitive information.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Upload documents to Azure Blob Storage.",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "Use the General Document model.",
+        "is_correct": false
+      },
+      {
+        "letter": "e",
+        "text": "Use the Layout model.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "c",
+      "e"
+    ],
+    "explanation": "Uploading documents to Azure Blob Storage ensures that the documents are secure and accessible for processing and analysis. Using the Layout model is critical for extracting key-value pairs and entities from structured and semi-structured documents, directly addressing the requirements of the task. Manually preprocessing documents to remove sensitive information is unnecessary because Azure Document Intelligence in Foundry Tools can handle sensitive data without manual intervention. The General Document model is deprecated and no longer used. Configuring an Azure AI Search resource is not necessary for this task.  \r\n  \r\nUse the General Document, Read, and Layout models - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/en-us/training/modules/use-prebuilt-form-recognizer-models/3-use-general-document-read-layout-models"
+    ],
+    "category": "Implement knowledge mining and information extraction solutions",
+    "question_number": 19
+  },
+  {
+    "question_text": "Your company is deploying a generative AI model using Microsoft Microsoft Foundry Service to assist customer support agents by providing suggested responses to user queries.  \r\n  \r\nYou need to ensure the model generates outputs that are safe and free from harmful content.  \r\n  \r\nEach correct answer presents part of the solution. Which three actions should you take?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Conduct red team exercises to test vulnerabilities.",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "Document the model's decision-making logic.",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Enable users to provide feedback on responses.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Integrate Microsoft Foundry Content Safety APIs.",
+        "is_correct": true
+      },
+      {
+        "letter": "e",
+        "text": "Train the model exclusively on synthetic data.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a",
+      "b",
+      "d"
+    ],
+    "explanation": "Conducting red team exercises helps identify vulnerabilities and improve the model's robustness against manipulation. This enhances the security and reliability of the AI system. Documenting the model's decision-making logic provides transparency and supports explainability requirements. This aligns with Responsible AI principles and addresses legal implications. Enabling users to provide feedback on every response may overwhelm users and does not directly address the goal of ensuring content safety. Integrating Microsoft Foundry Content Safety APIs helps identify and filter harmful content in real-time, ensuring the safety and appropriateness of the model's outputs. Training the model exclusively on synthetic data may limit its ability to generate realistic and contextually appropriate responses, reducing its effectiveness.  \r\n  \r\nWhat is Content Safety - Training | Microsoft Learn  \r\nMicrosoft Foundry - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/en-us/training/modules/responsible-content-safety/2-what-is-content-safety",
+      "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/4-azure-ai-foundry"
+    ],
+    "category": "Plan and manage an Azure AI solution",
+    "question_number": 20
+  },
+  {
+    "question_text": "Your organization is using Microsoft Foundry Agent Service to automate customer support workflows.  \r\n  \r\nYou need to configure an agent to interact with external APIs and use real-time data for responses.  \r\n  \r\nEach correct answer presents part of the solution. Which three actions should you perform?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Define tools for API access.",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "Deploy the agent using Azure SDK.",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Manually parse API responses in code.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Configure the Bing Search tool.",
+        "is_correct": true
+      },
+      {
+        "letter": "e",
+        "text": "Set up an Azure AI Search resource.",
+        "is_correct": false
+      },
+      {
+        "letter": "f",
+        "text": "Use Blob Storage for conversation state.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a",
+      "b",
+      "d"
+    ],
+    "explanation": "Defining tools for API access ensures the agent can interact with external APIs effectively. Deploying the agent using Azure SDK makes it operational within the Azure environment, enabling API interactions. Configuring the Bing Search tool enables the agent to access real-time data. Setting up an Azure AI Search resource is optional and does not directly contribute to enabling API interaction for the agent. Manually parsing API responses is unnecessary because Microsoft Foundry Agent Service automates tool calling and response handling. Using Blob Storage for conversation state is unnecessary because Microsoft Foundry Agent Service manages conversation state through threads.  \r\n  \r\nDevelop an AI agent with Microsoft Foundry Agent Service - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-azure/"
+    ],
+    "category": "Implement an agentic solution",
+    "question_number": 21
+  },
+  {
+    "question_text": "You are developing a containerized optical character recognition (OCR)-capable application by using Azure AI Services containers.\r\n\r\nWhile developing the solution, you retrieve a status message of “Mismatch”, and the connection to the AI Services resource fails.\r\n\r\nYou need to ensure that the solution can connect to the AI Services resource.\r\n\r\nWhat should you do?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Confirm that the API key is for the correct region.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Confirm that the API key is for the correct resource type.",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Confirm that the Azure AI Services resource is online.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Upgrade the Azure AI Services resource to a higher tier.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "explanation": "Mismatch means that the wrong API key has been used. If you have provided an API key or endpoint for a different kind of Azure AI Services resource, you find your API key and service region in the Azure portal, in the Keys and Endpoint section for your Azure AI Services resource.\r\n\r\nIf the API key is invalid, you must confirm that the API key is for the correct region. If the API key has exceeded the quota, then you can either upgrade your pricing tier or wait for an additional quota to become available. Find your tier in the Azure portal, in the Pricing Tier section of your Azure AI Service resource. The mismatch error would not be generated if the resource was offline.\r\n\r\nCognitive Services containers FAQ - Azure Cognitive Services | Microsoft Learn\r\n\r\nDeploy cognitive services in containers - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/containers/container-faq",
+      "https://learn.microsoft.com/training/modules/investigate-container-for-use-cognitive-services/"
+    ],
+    "category": "Plan and manage an Azure AI solution",
+    "question_number": 22
+  },
+  {
+    "question_text": "Your company processes scanned invoices to automate financial recordkeeping.  \r\n  \r\nYou need to identify and extract key fields from these invoices.  \r\n  \r\nEach correct answer presents part of the solution. Which three actions should you take?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Ensure input files meet required specifications.",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "Select the Business Card model.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Select the Invoice model.",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "Select the Read model.",
+        "is_correct": false
+      },
+      {
+        "letter": "e",
+        "text": "Use low-quality images.",
+        "is_correct": false
+      },
+      {
+        "letter": "f",
+        "text": "Use text-based PDF files.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "a",
+      "c",
+      "f"
+    ],
+    "explanation": "Meeting input requirements, such as file format and resolution, is essential for optimal data extraction performance. Text-embedded PDFs eliminate errors in character recognition, enhancing the accuracy of data extraction and optimizing the OCR process for structured data extraction. The Microsoft Invoice model is specifically trained to extract structured data from invoices, including fields like invoice number and total amount, directly addressing the requirement for structured data extraction from invoices. Low-resolution images reduce the accuracy of data extraction, making them unsuitable for this task. The Microsoft Business Card model is tailored for extracting data from business cards, not invoices, and does not align with the goal of extracting structured data from invoices. The Microsoft Read model is designed for general text extraction and does not specialize in structured data extraction from invoices, failing to meet the specific requirements of the task.  \r\n  \r\nUnderstand prebuilt models - Training | Microsoft Learn  \r\nUnderstand AI Document Intelligence - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/en-us/training/modules/use-prebuilt-form-recognizer-models/2-understand-prebuilt-models",
+      "https://learn.microsoft.com/en-us/training/modules/plan-form-recognizer-solution/2-understand"
+    ],
+    "category": "Implement knowledge mining and information extraction solutions",
+    "question_number": 23
+  },
+  {
+    "question_text": "You have an Azure Vision in Foundry Tools resource.\r\n\r\nYou plan to use the Azure Vision in Foundry Tools service to identify the location of several objects in an image.\r\n\r\nYou need the service to return the coordinates of the detected objects.\r\n\r\nWhich feature should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Detect brands",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "image tagging",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "object detection",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "recognize domain-specific content",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "c"
+    ],
+    "explanation": "You should use object detection because this feature in Azure Vision (Foundry Tools) identifies individual objects within an image and returns their bounding box coordinates, enabling you to determine the precise location of each detected object. Image tagging only returns descriptive labels with confidence scores and does not include spatial coordinates, detect brands focuses on identifying brand logos rather than general objects and does not provide full object location details, and recognize domain-specific content is intended for specialized scenarios and is deprecated, making it unsuitable for detecting and locating multiple objects in an image.  \r\n\r\nObject detection",
+    "references": [
+      "https://learn.microsoft.com/en-us/azure/ai-services/computer-vision/concept-object-detection"
+    ],
+    "category": "Implement computer vision solutions",
+    "question_number": 24
+  },
+  {
+    "question_text": "You are building an app that will use Azure Vision in Foundry Tools to detect the presence of people in a video feed.\r\n\r\nWhich Azure Vision in Foundry Tools feature should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "face detection",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Image Analysis",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "optical character recognition (OCR)",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Spatial Analysis",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "explanation": "The only visual feature that provides this capability is Spatial Analysis, as OCR, Image Analysis, and face detection are not meant to analyze the presence of people in a video feed.\r\n\r\nWhat is Computer Vision? - Azure Cognitive Services | Microsoft Learn\r\n\r\nAnalyze video - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/computer-vision/overview",
+      "https://learn.microsoft.com/training/modules/analyze-video/"
+    ],
+    "category": "Implement computer vision solutions",
+    "question_number": 25
+  },
+  {
+    "question_text": "You are developing a custom vision model using Microsoft Custom Vision to classify images of various plant species. A subset of the dataset has already been labeled, and an initial iteration of the model has been trained.  \r\n  \r\nYou need to efficiently improve the model's accuracy by optimizing the labeling process for the remaining untagged images.  \r\n  \r\nEach correct answer presents part of the solution. Which three actions should you perform?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Delete all previously tagged images.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Manually label all images from scratch.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Prioritize reviewing tags with high prediction uncertainty.",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "Review and confirm suggested tags for each image.",
+        "is_correct": true
+      },
+      {
+        "letter": "e",
+        "text": "Train the model without reviewing tags.",
+        "is_correct": false
+      },
+      {
+        "letter": "f",
+        "text": "Use Smart Labeler to suggest tags for untagged images.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "c",
+      "d",
+      "f"
+    ],
+    "explanation": "To optimize the labeling process and improve the model's accuracy, it is essential to review and confirm suggested tags to ensure data reliability. Prioritizing tags with high prediction uncertainty helps address ambiguous cases effectively, while using the Smart Labeler streamlines the process by leveraging the model's existing capabilities. Deleting previously tagged images would result in the loss of valuable data, training the model without reviewing tags could propagate errors, and manually labeling all images from scratch is inefficient and disregards the benefits of automation.  \r\n  \r\nUse the Azure Document Intelligence Studio - Training | Microsoft Learn  \r\nEnrich a search index in Azure AI Search with custom classes and Azure Language in Foundry Tools - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/en-us/training/modules/work-form-recognizer/9-form-recognizer-studio",
+      "https://learn.microsoft.com/en-us/training/modules/enrich-search-index-using-language-studio/03-enrich-cognitive-search-index-custom-classes"
+    ],
+    "category": "Implement computer vision solutions",
+    "question_number": 26
+  },
+  {
+    "question_text": "You are building an Azure Translator in Foundry Tools custom model.\r\n\r\nYou need to ensure that the translation accuracy for the model has a Bilingual Evaluation Understudy (BLEU) score that indicates high quality.\r\n\r\nWhat is the minimum score range required?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "0 to 19",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "20 to 39",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "40 to 59",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "60 to 79",
+        "is_correct": false
+      },
+      {
+        "letter": "e",
+        "text": "80 to 100",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "c"
+    ],
+    "explanation": "between 40 and 60 indicates a high-quality translation..\r\n\r\nKey terms - Custom Translator - Azure Cognitive Services | Microsoft Learn\r\n\r\nTranslate text with the Translator service - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/translator/custom-translator/key-terms",
+      "https://learn.microsoft.com/training/modules/translate-text-with-translator-service/"
+    ],
+    "category": "Implement natural language processing solutions",
+    "question_number": 27
+  },
+  {
+    "question_text": "You are building a custom translation model. \r\n\r\nYou need to evaluate the precision of the text that you translated by using a Bilingual Evaluation Understudy (BLEU) score. \r\n\r\nWhich scale is used for the score?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "between 0 and 1",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "between 0 and 100",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "low, medium, and high",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "explanation": "A BLEU score is a number between zero and 100. A score of zero indicates a low-quality translation, where nothing in the translation matches the reference. A score of 100 indicates a perfect translation that is identical to the reference. It is unnecessary to attain a score of 100. A BLEU score between 40 and 60 indicates a high-quality translation. \r\n\r\nCustom Translator for beginners - Azure Cognitive Services | Microsoft Learn\r\n\r\nTranslate text with the Translator service - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/translator/custom-translator/beginners-guide#what-is-a-bleu-score",
+      "https://learn.microsoft.com/training/modules/translate-text-with-translator-service/"
+    ],
+    "category": "Implement natural language processing solutions",
+    "question_number": 28
+  },
+  {
+    "question_text": "You are building a chatbot that will use the Azure Language in Foundry Tools question answering service.\r\n\r\nYou need to identify the operational costs for the service.\r\n\r\nWhich two parameters will influence the costs? Each correct answer presents a complete solution.",
+    "options": [
+      {
+        "letter": "a",
+        "text": "the number of assigned metadata tags",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "the number of knowledge base editors",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "the number of supported languages",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "the required throughput",
+        "is_correct": true
+      },
+      {
+        "letter": "e",
+        "text": "the size and the number of knowledge bases",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d",
+      "e"
+    ],
+    "explanation": "The throughput, the size, and the number of knowledge bases affect the pricing tier, whereas the other parameters do not affect pricing.\r\n\r\nAzure resources – question answering – Azure Cognitive Services | Microsoft Learn\r\n\r\nBuild a question answering solution – Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/language-service/question-answering/concepts/azure-resources",
+      "https://learn.microsoft.com/training/modules/build-qna-solution-qna-maker/"
+    ],
+    "category": "Implement natural language processing solutions",
+    "question_number": 29
+  },
+  {
+    "question_text": "You are building a solution that uses Azure AI Search. \r\n\r\nYou need to create a skillset definition. \r\n\r\nWhat are minimum sections you should include in the definition?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "`name`, `description`, and `skills`",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "`name, description, knowledgeStore`, and `encryptionKey`",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "`name, description, skills`, and `cognitiveServices `",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "`name, description, skills, knowledgeStore`, and `encryptionKey`",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "explanation": "Only `name`, `description`, and `skills` are required. \r\n\r\n`cognitiveServices` is used for billable skills that call Cognitive Services APIs.\r\n\r\n`knowledgeStore` specifies an Azure Storage account and the settings for projecting the skillset output into tables, blobs, and files in Azure Storage. \r\n\r\n`encryptionKey` specifies an Azure key vault and customer-managed keys used to encrypt sensitive content (descriptions, connection strings, keys) in a skillset definition.\r\n\r\nCreate a skillset - Azure Cognitive Search | Microsoft Learn\r\n\r\nCreate a custom skill for Azure Cognitive Search - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/search/cognitive-search-defining-skillset#add-a-skillset-definition",
+      "https://learn.microsoft.com/training/modules/create-enrichment-pipeline-azure-cognitive-search/"
+    ],
+    "category": "Implement knowledge mining and information extraction solutions",
+    "question_number": 30
+  },
+  {
+    "question_text": "You have an app that sends audio recordings from a call center to the speech-to-text feature of Azure Speech in Foundry Tools Service.\r\n\r\nDuring testing, you notice that the Word Error Rate (WER) is high and there are a lot of substitution errors.\r\n\r\nYou need to improve the model and reduce the WER.\r\n\r\nWhat should you add to the training data?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "custom product and people names",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "overlapping speakers",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "people talking in the background",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "explanation": "Substitution errors are due to the model needing more training on custom product names and people names.\r\n\r\nOverlapping speakers define when there are more deletion errors. People talking in the background are detected when there are more insertion errors.\r\n\r\nTest accuracy of a Custom Speech model - Speech service - Azure Cognitive Services | Microsoft Learn\r\n\r\nCreate speech-enabled apps with the Speech service - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/speech-service/how-to-custom-speech-evaluate-data?pivots=speech-studio#resolve-errors-and-improve-wer",
+      "https://learn.microsoft.com/training/modules/transcribe-speech-input-text/"
+    ],
+    "category": "Implement natural language processing solutions",
+    "question_number": 31
+  },
+  {
+    "question_text": "Your company needs to analyze images of retail shelves to identify product placement and stock levels.  \r\n  \r\nYou need to implement a Microsoft Azure AI solution to analyze these images.  \r\n  \r\nWhat should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Train an Azure AI Custom Vision model.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Use Azure Content Understanding in Foundry Tools.",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Use an Azure Vision in Foundry Tools prebuilt model.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Use a Microsoft Foundry GPT model.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "explanation": "Azure Content Understanding in Foundry Tools is the most appropriate solution as it is specifically designed to analyze images and extract structured data, such as product counts, directly addressing the requirements. Training a Custom Vision model would require additional effort and resources without providing any significant advantage over the existing capabilities of Azure Content Understanding in Foundry Tools. Prebuilt Azure Vision in Foundry Tools models can detect bounding boxes but does not offer the ability to count or extract structured data about products, making it unsuitable for this task. Microsoft Foundry GPT models can provide information based on provided data or information but is unable to achieve the desired result on its own.  \r\n  \r\nAzure Content Understanding in Foundry Tools image solutions (preview) - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/en-us/azure/ai-services/content-understanding/image/overview"
+    ],
+    "category": "Implement knowledge mining and information extraction solutions",
+    "question_number": 32
+  },
+  {
+    "question_text": "You have a website that allows users to upload images.\r\n\r\nYou need to ensure that the uploaded images do not contain adult content. The solution must minimize development effort.\r\n\r\nWhich service should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Azure Face in Foundry Tools service",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Azure AI Custom Vision",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Azure Vision in Foundry Tools Image Analysis",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "Azure Vision in Foundry Tools Spatial Analysis",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "c"
+    ],
+    "explanation": "The Azure Vision in Foundry Tools Image Analysis service can extract a wide variety of visual features from an image. One of them is to detect adult content.\r\n\r\nThe Azure AI Face service provides AI algorithms that detect, recognize, and analyze human faces in images. Azure AI Custom Vision is an image recognition service that lets you build, deploy, and improve own image identifier models. So, while it is possible, it is not the solution with the lowest development effort. Azure Vision in Foundry Tools Spatial Analysis is used to ingest streaming video from cameras, extract insights, and generate events to be used by other systems.\r\n\r\nWhat are Azure Cognitive Services? - Azure Cognitive Services | Microsoft Learn\r\n\r\nWhat is Computer Vision? - Azure Cognitive Services | Microsoft Learn\r\n\r\nWhat is Image Analysis? - Azure Cognitive Services | Microsoft Learn\r\n\r\nPlan and prepare to develop AI solutions on Azure",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/what-are-cognitive-services",
+      "https://learn.microsoft.com/azure/cognitive-services/computer-vision/overview",
+      "https://learn.microsoft.com/azure/cognitive-services/computer-vision/overview-image-analysis?tabs=3-2",
+      "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/"
+    ],
+    "category": "Plan and manage an Azure AI solution",
+    "question_number": 33
+  },
+  {
+    "question_text": "You are building an orchestration workflow to orchestrate and connect multiple Language Understanding models and question answering projects for use in a bot.\r\n\r\nWhich two operations can you perform in an orchestration workflow based on Azure Language in Foundry Tools service? Each correct answer presents a complete solution.",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Add entities to your orchestration workflow directly.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Connect to Language Understanding applications that are owned by the same resource as the orchestration workflow.",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Connect to question answering projects that are in the same Azure Language in Foundry Tools service resource as your orchestration workflow.",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "Label a single word as two different entities.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b",
+      "c"
+    ],
+    "explanation": "Adding entities to your orchestration workflow is not allowed. Entities are mutually exclusive within an orchestration workflow.\r\n\r\nFrequently Asked Questions for orchestration projects - Azure Cognitive Services | Microsoft Learn\r\n\r\nBuild a Language Understanding model - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/language-service/orchestration-workflow/faq",
+      "https://learn.microsoft.com/training/modules/build-language-understanding-model/"
+    ],
+    "category": "Implement natural language processing solutions",
+    "question_number": 34
+  },
+  {
+    "question_text": "You have a web app named App1 that performs customs searches.\r\n\r\nYou are building a solution that uses Azure AI Search. \r\n\r\nYou need to include App1 as a custom skill as part of the solution. \r\n\r\nWhich @odata.type should you use to call App1?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "`Microsoft.Skills.Custom.AmlSkill`",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "`Microsoft.Skills.Custom.WebApiSkill`",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "`Microsoft.Skills.Text.CustomEntityLookupSkill `",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "`Microsoft.Skills.Util.ConditionalSkill`",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "explanation": "`Microsoft.Skills.Custom.WebApiSkill` allows the extensibility of an AI enrichment pipeline by making an HTTP call to a custom web API.\r\n\r\nBuilt-in skills - Azure Cognitive Search | Microsoft Learn\r\n\r\nCreate a custom skill for Azure Cognitive Search - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/search/cognitive-search-predefined-skills",
+      "https://learn.microsoft.com/training/modules/create-enrichment-pipeline-azure-cognitive-search/"
+    ],
+    "category": "Implement knowledge mining and information extraction solutions",
+    "question_number": 35
+  },
+  {
+    "question_text": "You have a Microsoft Foundry resource.\r\n\r\nYou need to create an agent by using the Microsoft Foundry Agent Service. The agent will use ground prompts with contextual data and document the sources.\r\n\r\nWhich three elements should you specify in the agent configuration? Each correct answer presents part of the solution.",
+    "options": [
+      {
+        "letter": "a",
+        "text": "instructions",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "model deployment",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "name",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "tools",
+        "is_correct": false
+      },
+      {
+        "letter": "e",
+        "text": "YAML file",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "When creating an agent by using the Microsoft Foundry Agent Service, you must specify the agent name, the model deployment, and the instructions in the agent configuration because these elements define the agent’s identity, the foundation model it uses, and how it behaves when applying grounded prompts and contextual data, including documenting sources. Tools are optional and only required when the agent must call external capabilities, and a YAML file itself is not a configuration element but merely one possible format used to define the agent. Therefore, specifying instructions, model deployment, and name is required to successfully create the agent using the Agent Service.  \r\n\r\nIntroduction\r\n\r\nHow to use Microsoft Foundry Agent Service\r\n\r\nMicrosoft Foundry Agent Service\r\n\r\nDevelop AI agents in Visual Studio Code",
+    "references": [
+      "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-azure/1-introduction",
+      "https://learn.microsoft.com/en-us/training/modules/develop-ai-agent-azure/3-how-use-agent-service",
+      "https://learn.microsoft.com/en-us/training/modules/ai-agent-fundamentals/4-azure-ai-agent-service",
+      "https://learn.microsoft.com/en-us/training/modules/develop-ai-agents-vs-code/3-agent-development"
+    ],
+    "category": "Implement an agentic solution",
+    "question_number": 36
+  },
+  {
+    "question_text": "You are building an app that will extract text from scanned receipts.\r\n\r\nYou need to recommend which service to use. The solution must minimize development effort.\r\n\r\nWhat should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Azure Vision in Foundry Tools",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Azure AI Custom Vision",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Azure Document Intelligence in Foundry Tools",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "Azure Machine Learning",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "c"
+    ],
+    "explanation": "Azure Document Intelligence in Foundry Tools is designed to work with documents such as receipts, as it offers prebuilt models for extracting information from these kinds of documents.\r\n\r\nOCR - Optical Character Recognition - Azure Cognitive Services | Microsoft Learn\r\n\r\nExtract data from forms with Form Recognizer - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/computer-vision/overview-ocr",
+      "https://learn.microsoft.com/training/modules/work-form-recognizer/"
+    ],
+    "category": "Plan and manage an Azure AI solution",
+    "question_number": 37
+  },
+  {
+    "question_text": "You are developing a custom vision model using Microsoft Azure AI Custom Vision to detect specific objects in images. The dataset includes labeled images for training and validation.  \r\n  \r\nYou need to ensure that the trained model meets the required accuracy by assessing its performance.  \r\n  \r\nWhat action should you take?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Deploy the model without testing.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Evaluate precision and recall metrics.",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Source new images for testing.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Retrain the model with a new dataset.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "explanation": "Evaluating precision and recall metrics is the most effective way to assess the performance of an object detection model, as these metrics provide a detailed understanding of its accuracy and ability to identify objects correctly. Deploying the model without testing bypasses the critical step of ensuring its reliability and effectiveness. Sourcing new images for testing isn't necessary with a dataset already containing validation images. Retraining the model with a new dataset focuses on improving data quality rather than assessing the current model's performance, making it unsuitable for the given objective.  \r\n  \r\nTest and retrain a Custom Vision model - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/en-us/azure/ai-services/custom-vision-service/test-your-model"
+    ],
+    "category": "Implement computer vision solutions",
+    "question_number": 38
+  },
+  {
+    "question_text": "You are building a custom translation model. \r\n\r\nYou need to use bilingual training documents to teach the model your terminology and style. \r\n\r\nWhich rule should you follow?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Be liberal.",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "Be restrictive.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Be strict.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "explanation": "Be liberal is correct. Any in-domain human translation is better than machine translation. Add and remove documents as you go and try to improve the Bilingual Evaluation Understudy (BLEU) score.\r\n\r\nBe strict is incorrect. Compose them to be optimally representative of what you are going to translate in the future. Be restrictive is also incorrect. A phrase dictionary is case-sensitive, and any word or phrase listed is translated in the way you specify. In many cases, it is better to not use a phrase dictionary and let the system learn.\r\n\r\nCustom Translator for beginners - Azure Cognitive Services | Microsoft Learn\r\n\r\nTranslate text with the Translator service - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/translator/custom-translator/beginners-guide#what-should-i-use-for-training-material",
+      "https://learn.microsoft.com/training/modules/translate-text-with-translator-service/"
+    ],
+    "category": "Implement natural language processing solutions",
+    "question_number": 39
+  },
+  {
+    "question_text": "You need to build an app that will summarize text documents into key phrases. \r\n\r\nWhich Azure Language in Foundry Tools feature should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Language Summarization",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "key phrase extraction",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Named Entity Recognition (NER)",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Personally Identifiable Information (PII) detection",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "explanation": "Key phrase extraction is used to quickly identify the main concepts in text, whereas the other features do not return key phrases from longer text documents.\r\n\r\nWhat is key phrase extraction in Azure Cognitive Service for Language? - Azure Cognitive Services | Microsoft Learn\r\n\r\nExtract insights from text with the Language service - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/language-service/key-phrase-extraction/overview",
+      "https://learn.microsoft.com/training/modules/extract-insights-text-with-text-analytics-service/"
+    ],
+    "category": "Implement natural language processing solutions",
+    "question_number": 40
+  },
+  {
+    "question_text": "You are building an app that will use Azure AI Custom Vision. The app will be deployed to a virtual machine in Azure.\r\n\r\nYou enable firewall rules for your Azure AI Services account.\r\n\r\nYou need to ensure that the app can access the service through a service endpoint. \r\n\r\nWhat should you do?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Assign a role-based access control (RBAC) role to the Azure AI Custom Vision resource.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Grant access to a specific virtual network.",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Grant access to an internet IP range.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Include an access token in the Authorization header.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "explanation": "If you enable the firewall for the Azure AI Services account, you need to allow network access to the service. You can achieve this by either allowing access from a specific virtual network or adding an IP range to the firewall rules. In this situation, the app is deployed to a virtual machine in Azure, which resides in a virtual network. You can provide access to virtual networks in Azure to access specific service endpoints.\r\n\r\nConfigure Virtual Networks for Azure Cognitive Services - Azure Cognitive Services | Microsoft Learn\r\n\r\nSecure Cognitive Services - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/cognitive-services-virtual-networks?context=%2Fazure%2Fcognitive-services%2Fcustom-vision-service%2Fcontext%2Fcontext&tabs=portal",
+      "https://learn.microsoft.com/training/modules/secure-cognitive-services/"
+    ],
+    "category": "Plan and manage an Azure AI solution",
+    "question_number": 41
+  },
+  {
+    "question_text": "An organization manually processes a high volume of invoices daily, leading to errors in data extraction.  \r\n  \r\nYou need to use Microsoft Azure Document Intelligence in Foundry Tools to automate invoice data extraction and integration.  \r\n  \r\nEach correct answer presents part of the solution. Which two actions should you take?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Integrate the extracted data with an organization's database.",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "Train a custom model for document processing.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Use a general-purpose model for text extraction.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Use the prebuilt Invoice model for data extraction.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "a",
+      "d"
+    ],
+    "explanation": "Integrating the extracted data with an organization's database ensures the information is stored and used effectively within existing systems, supporting downstream processes and workflows. Using the prebuilt Invoice model for data extraction is ideal because it is specifically designed to handle invoice documents, extracting structured data such as key-value pairs and tables efficiently. Training a custom model for document processing is unnecessary in this scenario since the prebuilt Invoice model meets the requirements for standard invoices. Using a general-purpose model for text extraction does not align with the goal of extracting structured data from invoices, as it lacks the specificity required for this task.  \r\n  \r\nWhat is Azure Document Intelligence? - Training | Microsoft Learn  \r\nUnderstand AI Document Intelligence - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/en-us/training/modules/work-form-recognizer/2-what-form-recognizer",
+      "https://learn.microsoft.com/en-us/training/modules/plan-form-recognizer-solution/2-understand"
+    ],
+    "category": "Implement knowledge mining and information extraction solutions",
+    "question_number": 42
+  },
+  {
+    "question_text": "You are building a GPT-based chat application that will answer questions about your company.\r\n\r\nYou plan to use the Using your data feature in Azure OpenAI to ground the model with your company data.\r\n\r\nWhile testing, you discover that some responses are not accurate enough.\r\n\r\nYou need to configure the Azure OpenAI resource to filter out less-relevant documents for responses.\r\n\r\nWhich parameter should you configure?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Content data",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "File name",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Retrieved documents",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Strictness",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "explanation": "The Strictness parameter sets the threshold to categorize documents as relevant to your queries. Raising the Strictness parameter value means a higher threshold for relevance and filters out more less-relevant documents for responses. Retrieved documents specifies the number of top-scoring documents from your data index used to generate responses. Content data specifies the fields in your index that contain the main text content of each document. File name specifies the field in your index that contains the original file name of each document.\r\n\r\nUsing your data with Azure OpenAI Service - Azure OpenAI | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/ai-services/openai/concepts/use-your-data?tabs=ai-search"
+    ],
+    "category": "Implement generative AI solutions",
+    "question_number": 43
+  },
+  {
+    "question_text": "You are configuring a custom question answering solution in Azure Language in Foundry Tools Service.\r\n\r\nYou execute the following API call and receive the following error.\r\n\r\n`\"synonyms\": [`\r\n\r\n`        {`\r\n\r\n`            \"alterations\": [`\r\n\r\n`                \"fix problems\",`\r\n\r\n`                \"troubleshoot\",`\r\n\r\n`                \"#diagnostic\",`\r\n\r\n`                ]`\r\n\r\n`        },`\r\n\r\n`...`\r\n\r\nYou need to ensure that the API call executes successfully.\r\n\r\nWhat should you do?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Modify the order of the synonyms.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Remove any question and answer pairs from the call.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Remove any special characters from the call.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "c"
+    ],
+    "explanation": "Special characters are not allowed for synonyms. \r\n\r\nSynonyms can be added in any order, and the ordering is not considered in any computational logic. Synonyms can only be added to a project that has at least one question and answer pair. \r\n\r\nImprove the quality of responses with synonyms - Azure Cognitive Services | Microsoft Learn\r\n\r\nBuild a question answering solution - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/language-service/question-answering/tutorials/adding-synonyms",
+      "https://learn.microsoft.com/training/modules/build-qna-solution-qna-maker/"
+    ],
+    "category": "Implement natural language processing solutions",
+    "question_number": 44
+  },
+  {
+    "question_text": "Your company plans to develop an app with an AI model using proprietary data.  \r\n  \r\nYou need to select an Azure platform to ensure the model is connected and operationalized effectively.  \r\n  \r\nWhich Azure service should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Azure Content Understanding in Foundry Tools",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Azure Speech in Foundry Tools",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Azure Vision in Foundry Tools",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Microsoft Foundry",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "explanation": "Microsoft Foundry is the most appropriate platform because it offers specialized tools for deploying models, connecting data, and managing AI resources. Azure Content Understanding in Foundry Tools focuses on multimodal content analysis and does not support custom model development. Azure Speech in Foundry Tools is designed for speech-related tasks and lacks the necessary features for connecting or operationalizing generative AI models. Azure Vision in Foundry Tools is tailored for prebuilt computer vision models and does not meet the requirements for AI model development.  \r\n  \r\nAzure AI services - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/en-us/training/modules/prepare-azure-ai-development/3-azure-ai-services"
+    ],
+    "category": "Plan and manage an Azure AI solution",
+    "question_number": 45
+  },
+  {
+    "question_text": "You are building an app that uses Azure AI Video Indexer. \r\n\r\nYou need to extract keyframes from uploaded video and store them on a disk by using the API. \r\n\r\nHow should you implement the solution?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Upload the video and download the ZIP file of the thumbnails.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Upload the video, download the ZIP file of the thumbnails, and get the thumbnail for each keyframe.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Upload the video, get the video index, and get the thumbnail for each keyframe.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "c"
+    ],
+    "explanation": "You need to upload the video, get the video index, and get the thumbnail for each keyframe. Three API calls need to be done.\r\n\r\nUploading the video and then downloading the ZIP file of the thumbnails is the path through the Azure portal. You need the index to know the correct parameters for the thumbnail request.\r\n\r\nAnalyze video - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/en-us/training/modules/analyze-video/"
+    ],
+    "category": "Implement computer vision solutions",
+    "question_number": 46
+  },
+  {
+    "question_text": "Your company receives incoming documents that need to be classified into predefined categories before extracting specific data fields.  \r\n  \r\nYou need to implement a solution that accurately classifies documents and supports subsequent data extraction.  \r\n  \r\nWhich solution should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Azure Vision in Foundry Tools OCR (Optical Character Recognition)",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Custom classification model in Azure Document Intelligence in Foundry Tools",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Custom template model in Azure Document Intelligence in Foundry Tools",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Invoice model in Azure Document Intelligence in Foundry Tools",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "explanation": "The custom classification model in Azure Document Intelligence in Foundry Tools is the most suitable solution because it is specifically designed to categorize documents into predefined categories, enabling accurate classification and supporting subsequent data extraction. Custom template models are limited to data extraction from structured documents and do not address classification needs. Azure Vision in Foundry Tools OCR focuses solely on text recognition and lacks the functionality required for document categorization. The Invoice model is tailored for invoice processing and does not meet the broader requirements for document classification described in the scenario.  \r\n  \r\nWhat is Azure Document Intelligence? - Training | Microsoft Learn  \r\nUse financial, ID, and tax models - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/en-us/training/modules/work-form-recognizer/2-what-form-recognizer",
+      "https://learn.microsoft.com/en-us/training/modules/use-prebuilt-form-recognizer-models/4-use-financial-id-tax-models"
+    ],
+    "category": "Implement knowledge mining and information extraction solutions",
+    "question_number": 47
+  },
+  {
+    "question_text": "Your organization is developing a customer-facing application that uses Azure OpenAI in Foundry Models to generate personalized responses. The application is connected to a Microsoft Azure AI Search index.  \r\n  \r\nYou need to configure the application to retrieve relevant data from the search index.  \r\n  \r\nWhat should you do?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Deploy an additional Azure OpenAI model.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Enable semantic search.",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Increase chunk size for data ingestion.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Use keyword search.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "explanation": "Enabling semantic search enhances the precision and relevance of search results by interpreting the meaning behind query terms, making it the most suitable solution for improving response accuracy in this scenario. Increasing chunk size impacts data processing but does not directly affect the accuracy of retrieved data. Deploying an additional Azure OpenAI model does not address the specific need for improving data retrieval accuracy from the search index. Using keyword search lacks semantic capabilities, which are essential for achieving the desired level of accuracy.  \r\n  \r\nMake your data searchable - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/en-us/training/modules/build-copilot-ai-studio/3-search-data"
+    ],
+    "category": "Implement generative AI solutions",
+    "question_number": 48
+  },
+  {
+    "question_text": "Your company is integrating Azure OpenAI in Foundry Models into its internal knowledge base system to provide intelligent query responses.  \r\n  \r\nYou need to ensure that the most relevant documents are prioritized during data retrieval.  \r\n  \r\nWhat should you do?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Enable hybrid search mode.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Increase retrieved document count.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Reduce chunk size.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Set strictness to a higher value.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "explanation": "Setting strictness to a higher value ensures that only the most relevant documents are retrieved, effectively prioritizing relevance during data retrieval. Enabling hybrid search mode combines different search methods but does not specifically focus on document relevance. Increasing the number of retrieved documents may include less relevant data, which contradicts the goal of prioritizing relevance. Reducing chunk size impacts data granularity but does not directly influence the prioritization of document relevance.  \r\n  \r\nAzure OpenAI On Your Data - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/en-us/azure/ai-foundry/openai/concepts/use-your-data?tabs=ai-search%2Ccopilot"
+    ],
+    "category": "Implement generative AI solutions",
+    "question_number": 49
+  },
+  {
+    "question_text": "You are building a web app that will generate images based on user prompts. The app will use the DALL-E 3 Azure OpenAI model.\r\n\r\nYou need to ensure that HTTP requests against the Azure OpenAI API successfully generate images.\r\n\r\nWhich three HTTP header properties should you include? Each correct answer presents part of the solution.",
+    "options": [
+      {
+        "letter": "a",
+        "text": "the API version used in this operation",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "the name of the Azure OpenAI service resource",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "the name of the DALL-E 3 model deployment",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "the quality of the generated images",
+        "is_correct": false
+      },
+      {
+        "letter": "e",
+        "text": "the style of the generated images",
+        "is_correct": false
+      },
+      {
+        "letter": "f",
+        "text": "the user’s prompt",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a",
+      "b",
+      "c"
+    ],
+    "explanation": "The name of the Azure OpenAI resource, the name of the DALL-E 3 model deployment, and the API version to be used are the three required header properties for HTTP requests. The other answers are valid for use in the HTTP body but not the header.\r\n\r\nAzure OpenAI Service REST API reference - Azure OpenAI | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/ai-services/openai/reference"
+    ],
+    "category": "Implement generative AI solutions",
+    "question_number": 50
+  },
+  {
+    "question_text": "You need to build an app that will use Azure Vision in Foundry Tools to analyze and detect animals in images.\r\n\r\nWhich type of project should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "image classification",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "image detection",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "object analysis",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "object classification",
+        "is_correct": false
+      },
+      {
+        "letter": "e",
+        "text": "object detection",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "e"
+    ],
+    "explanation": "Object detection returns the coordinates in an image where the applied label(s) can be found, while image classification applies one or more labels to an entire image.\r\n\r\nWhat is Custom Vision? - Azure Cognitive Services | Microsoft Learn\r\n\r\nDetect objects in images - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/custom-vision-service/overview",
+      "https://learn.microsoft.com/training/modules/detect-objects-images/"
+    ],
+    "category": "Implement computer vision solutions",
+    "question_number": 51
+  },
+  {
+    "question_text": "You are using Azure Translator in Foundry Tools to translate documents from one language to another. \r\n\r\nYou need to extend the capabilities of an application by using the Azure Translator in Foundry Tools service.\r\n\r\nWhich three features are available in the Translator service? Each correct answer presents a complete solution.",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Detect language",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "Dictionary lookup",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Entity extraction",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Intent recognition",
+        "is_correct": false
+      },
+      {
+        "letter": "e",
+        "text": "Transliterate",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "a",
+      "b",
+      "e"
+    ],
+    "explanation": "Apart from translation, the following features are part of Translator: Transliterate, Detect, Dictionary lookup, and Dictionary example.\r\n\r\nWhat is Microsoft Azure Cognitive Services Text Translation? - Azure Cognitive Services | Microsoft Learn\r\n\r\nTranslate text with the Translator service - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/translator/text-translation-overview",
+      "https://learn.microsoft.com/training/modules/translate-text-with-translator-service/"
+    ],
+    "category": "Implement natural language processing solutions",
+    "question_number": 52
+  },
+  {
+    "question_text": "Your organization processes invoices from vendors in various formats, including scanned PDFs and digital images.  \r\n  \r\nYou need to implement Azure Document Intelligence in Foundry Tools to extract key fields such as invoice number, due date, and total amount.  \r\n  \r\nEach correct answer presents part of the solution. Which two actions should you perform?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Create a custom model for invoice processing.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Install the solution on a local server.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Label all invoice documents manually.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Provision an Azure Document Intelligence in Foundry Tools resource.",
+        "is_correct": true
+      },
+      {
+        "letter": "e",
+        "text": "Edit the invoices to ensure consistency.",
+        "is_correct": false
+      },
+      {
+        "letter": "f",
+        "text": "Use the prebuilt invoice model to extract key fields.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d",
+      "f"
+    ],
+    "explanation": "To implement the solution, provisioning the Azure Document Intelligence in Foundry Tools resource is a necessary first step to enable its capabilities. Using the prebuilt invoice model is the most efficient approach for extracting key fields such as invoice number, due date, and total amount, as it is specifically designed for this purpose. Installing the solution on a local server is irrelevant because the service is cloud-based and does not require local installation. Creating a custom model is unnecessary because the prebuilt invoice model already meets the requirements, saving time and effort. Manually labeling invoice documents is also not needed, as the prebuilt model leverages pre-trained capabilities to eliminate this step. Editing the invoices to ensure consistency won't help when processing incoming invoices and doesn't provide the model with varied training data  \r\n  \r\nDocument Intelligence invoice model - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/en-us/azure/ai-services/document-intelligence/prebuilt/invoice"
+    ],
+    "category": "Implement knowledge mining and information extraction solutions",
+    "question_number": 53
+  },
+  {
+    "question_text": "You are building an app that will recognize the intent and entities of user utterances in real time using the Azure Speech in Foundry Tools Service.\r\n\r\nYou need to implement the pattern matching intent recognition mechanism. The solution must only detect entities that you define in a catalog of phrases.\r\n\r\nWhich entity type should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "the List entity using Fuzzy mode",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "the List entity using Strict mode",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "the prebuilt entity using Fuzzy mode",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "the prebuilt entity using Strict mode",
+        "is_correct": false
+      },
+      {
+        "letter": "e",
+        "text": "the regex entity using Fuzzy mode",
+        "is_correct": false
+      },
+      {
+        "letter": "f",
+        "text": "the regex entity using Strict mode",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "explanation": "The List entity is made up of a list of phrases that will guide the engine on how to match the text. When an entity has an ID of type List and is in Strict mode, the engine will only match if the text in the slot appears in the list.\r\n\r\nPattern Matching overview - Azure Cognitive Services | Microsoft Learn\r\n\r\nCreate speech-enabled apps with the Speech service - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/speech-service/pattern-matching-overview#types-of-entities",
+      "https://learn.microsoft.com/training/modules/transcribe-speech-input-text/"
+    ],
+    "category": "Implement natural language processing solutions",
+    "question_number": 54
+  },
+  {
+    "question_text": "You are developing a custom vision model using Microsoft Azure Custom Vision to classify images of various food items. The dataset includes images labeled as 'vegetable-fruit', 'dessert', and 'soup'.  \r\n  \r\nYou need to optimize the training process to improve the model's performance metrics.  \r\n  \r\nEach correct answer presents part of the solution. Which two actions should you perform?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Select the 'Food' domain.",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "Select the 'General' domain.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Set a high probability threshold during training.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Use consistent tags to label images.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "a",
+      "d"
+    ],
+    "explanation": "Using consistent tags to label images ensures that the model can accurately associate visual features with their respective categories, which is essential for effective training. Selecting the 'Food' domain optimizes the model for food-related image classification tasks, leveraging domain-specific features to enhance performance. Setting a high probability threshold during training is not suitable because it could reduce recall by limiting the number of classifications detected. Similarly, selecting the 'General' domain is not ideal as it lacks the specialization required for food-related tasks, potentially leading to suboptimal results.  \r\n  \r\nUnderstand types of classification projects - Training | Microsoft Learn  \r\nSelect a domain for a Custom Vision project - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/en-us/training/modules/custom-text-classification/2-understand-types-of-classification-projects",
+      "https://learn.microsoft.com/en-us/azure/ai-services/custom-vision-service/select-domain"
+    ],
+    "category": "Implement computer vision solutions",
+    "question_number": 55
+  },
+  {
+    "question_text": "You are building a knowledge mining solution by using Azure AI Search. \r\n\r\nYou need to ensure that the solution supports wildcard queries in search requests.\r\n\r\nWhat should you include in the REST API request?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "`“queryType”: “extended” `",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "`“queryType”: “full” `",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "`“queryType”: “simple”`",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "`“queryType”: “wildcard”`",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "explanation": "queryType “full” extends the default Simple query language by adding support for more operators and query types, such as wildcard, fuzzy, regex, and field-scoped queries.\r\n\r\nFull text query and indexing engine architecture (Lucene) - Azure Cognitive Search | Microsoft Learn\r\n\r\nCreate an Azure Cognitive Search solution - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/search/search-lucene-query-architecture",
+      "https://learn.microsoft.com/training/modules/create-azure-cognitive-search-solution/"
+    ],
+    "category": "Implement knowledge mining and information extraction solutions",
+    "question_number": 56
+  },
+  {
+    "question_text": "You have a website that enables users to upload and share PNG image files.\r\n\r\nYou implement a Microsoft Foundry Content Safety solution for the website.\r\n\r\nThe users report that some images fail to display after they are uploaded.\r\n\r\nYou need to ensure that the solution assigns proper content flags to the uploaded images.\r\n\r\nWhat should you do?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Adjust the content categories to be used.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Adjust the severity level.",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Convert the images to a different file format.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Remove the severity level.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "explanation": "Best practices for improving system performance:\r\n\r\n- Monitor the system's performance regularly to ensure that the tradeoff is appropriate for your use case.\r\n- Modify the severity levels for blocking based on user feedback and observed trends in content safety.\r\n\r\nTransparency Note and use cases for AI Content Safety - Azure AI services | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/legal/cognitive-services/content-safety/transparency-note?context=%2Fazure%2Fai-services%2Fcontent-safety%2Fcontext%2Fcontext"
+    ],
+    "category": "Plan and manage an Azure AI solution",
+    "question_number": 57
+  },
+  {
+    "question_text": "You are building a knowledge mining solution that will use AI enrichment and Azure AI Search. \r\n\r\nYou need to create a data structure that will be used to store the enriched and indexed output for downstream apps.\r\n\r\nWhat should you create?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "a knowledge store",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "a searchable index",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "a searchable store",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "an enrichment cache",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "explanation": "A knowledge store is used for downstream apps, such as knowledge mining and data science. A knowledge store is defined within a skillset. Its definition determines whether your enriched documents are projected as tables or objects (files or blobs) in Azure Storage.\r\n\r\nAI enrichment concepts - Azure Cognitive Search | Microsoft Learn\r\n\r\nCreate a knowledge store with Azure Cognitive Search - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/search/cognitive-search-concept-intro",
+      "https://learn.microsoft.com/training/modules/create-knowledge-store-azure-cognitive-search/"
+    ],
+    "category": "Implement knowledge mining and information extraction solutions",
+    "question_number": 58
+  },
+  {
+    "question_text": "You build an app named App1 that uses the Azure Face in Foundry Tools service.\r\n\r\nYou need to optimize the app for images that contain blurry faces.\r\n\r\nWhat should you do?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Change the recognition model to `recognition_02`.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Decrease the `faceIdTimeToLive` value.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Set the detection model to `detection_03`.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "c"
+    ],
+    "explanation": "Model\\_3 Improves accuracy on small, side-view, and blurry faces.\r\n\r\nChanging the recognition model to recognition\\_02 will improve facial recognition and faceIdTimeToLive is used for the number of seconds that the face ID is cached, which has no impact on blurry faces.\r\n\r\nHow to specify a detection model - Face - Azure Cognitive Services | Microsoft Learn\r\n\r\nDetect, analyze, and recognize faces - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/computer-vision/how-to/specify-detection-model",
+      "https://learn.microsoft.com/training/modules/detect-analyze-recognize-faces/"
+    ],
+    "category": "Implement computer vision solutions",
+    "question_number": 59
+  },
+  {
+    "question_text": "You are building a model that uses Conversational Language Understanding (CLU).\r\n\r\nYou need to train the model.\r\n\r\nWhich training methods can you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "advanced, deterministic, and standard",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "advanced only",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "deterministic only",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "standard and advanced only",
+        "is_correct": true
+      },
+      {
+        "letter": "e",
+        "text": "standard only",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "explanation": "Both standard and advanced are from CLU. Deterministic is a method from Language Understanding.\r\n\r\nHow to train and evaluate models in Conversational Language Understanding - Azure Cognitive Services | Microsoft Learn\r\n\r\nHow to use train and test - Azure Cognitive Services | Microsoft Learn\r\n\r\nBuild a Language Understanding model - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/language-service/conversational-language-understanding/how-to/train-model?tabs=language-studio#training-modes",
+      "https://learn.microsoft.com/azure/cognitive-services/luis/how-to/train-test#change-deterministic-training-settings-using-the-version-settings-api",
+      "https://learn.microsoft.com/training/modules/build-language-understanding-model/"
+    ],
+    "category": "Implement natural language processing solutions",
+    "question_number": 60
+  },
+  {
+    "question_text": "You are building a knowledge mining solution that uses Azure AI Search. \r\n\r\nYou need to extract content from a file within the enrichment pipeline by using AI enrichment.\r\n\r\nWhich built-in skill should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "`Microsoft.Skills.Text.KeyPhraseExtractionSkill`",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "`Microsoft.Skills.Text.SplitSkill `",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "`Microsoft.Skills.Text.V3.EntityRecognitionSkill `",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "`Microsoft.Skills.Util.DocumentExtractionSkill`",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "explanation": "`Microsoft.Skills.Util.DocumentExtractionSkill` is the built-in skill used to extract content from a file within the enrichment pipeline.\r\n\r\nBuilt-in skills – Azure Cognitive Search | Microsoft Learn\r\n\r\nCreate an Azure Cognitive Search solution – Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/search/cognitive-search-predefined-skills",
+      "https://learn.microsoft.com/training/modules/create-azure-cognitive-search-solution/"
+    ],
+    "category": "Implement knowledge mining and information extraction solutions",
+    "question_number": 61
+  },
+  {
+    "question_text": "You are building an app that will analyze meeting recordings and identify who is speaking at which moment in time. \r\n\r\nYou need to configure a voice profile for the app.\r\n\r\nWhich type of voice profile should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Speaker identification",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "text-dependent verification",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "text-independent verification",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "explanation": "Text-independent verification means that speakers can speak in everyday language in enrollment and verification phases. \r\n\r\nText-dependent verification means that speakers need to choose the same passphrase to use during both enrollment and verification phases. This is the voice profile that should be used when configuring a voice profile for the app.\r\n\r\nSpeaker identification helps you determine an unknown speaker’s identity within a group of enrolled speakers.\r\n\r\nSpeaker recognition overview - Speech service - Azure Cognitive Services | Microsoft Learn\r\n\r\nCreate speech-enabled apps with the Speech service - Training | Microsoft Learn",
+    "references": [
+      "https://learn.microsoft.com/azure/cognitive-services/speech-service/speaker-recognition-overview",
+      "https://learn.microsoft.com/training/modules/transcribe-speech-input-text/"
+    ],
+    "category": "Implement natural language processing solutions",
+    "question_number": 62
+  }
+]
