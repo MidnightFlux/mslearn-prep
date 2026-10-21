@@ -166,8 +166,14 @@ async function selectQuestionFile(filename) {
             throw new Error('Invalid question file: no questions found');
         }
         
+        // backfill question_number from original order when the file omits it
+        questions.forEach((q, idx) => {
+            if (!q.question_number) {
+                q.question_number = idx + 1;
+            }
+        });
+        
         const valid = questions.every(q => 
-            q.question_number && 
             q.question_text && 
             Array.isArray(q.options) && 
             Array.isArray(q.correct_answers)
