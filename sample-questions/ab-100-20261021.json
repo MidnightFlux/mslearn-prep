@@ -93,7 +93,7 @@
     "explanation": "Connection references and environment variables supply environment-specific values to be supplied at deployment time, while keeping the solution artifact consistent across environments. Unmanaged solutions, separate publishers, and excluding components do not support repeatable ALM practices."
   },
   {
-    "question_text": "A company has a customer-support agent built in Microsoft Foundry. The agent uses RAG and a shared Azure AI Search index. The index contains both internal HR documents and public content and is populated by a governed data source that has auditable access controls.\n\nSecurity testing shows that unauthorized users can retrieve internal documents through prompt injection attacks.\n\nYou need to recommend a solution to mitigate this risk. The solution must meet the following requirements:\n\n• Continue to use a shared search index.\n• Prevent unauthorized content from being returned.\n• Maintain auditable governance over the grounding data.\n\nWhat should you recommend?",
+    "question_text": "A company has a customer-support agent built in Microsoft Foundry. The agent uses RAG and a shared Azure AI Search index. The index contains both internal HR documents and public content and is populated by a governed data source that has auditable access controls.\n\nSecurity testing shows that unauthorized users can retrieve internal documents through prompt injection attacks.\n\nYou need to recommend a solution to mitigate this risk. The solution must meet the following requirements:\n\n• Continue to use a shared search index.\n\n• Prevent unauthorized content from being returned.\n\n• Maintain auditable governance over the grounding data.\n\nWhat should you recommend?",
     "options": [
       {
         "letter": "a",
@@ -310,7 +310,7 @@
     "explanation": "Using a single custom solution publisher with managed solutions reduces component conflicts, supports parallel release branches, and minimizes deployment risks when shared components evolve across environments. Multiple publishers, unmanaged solutions, and developer-built packages increase the likelihood of conflicts and weaken controlled ALM practices."
   },
   {
-    "question_text": "A company has a customer service agent that calls an Azure OpenAI model and sends traces to Azure Monitor Application Insights.\nAfter a recent release, average response latency and monitoring costs have increased. Telemetry shows higher token usage per request and a large increase in ingested trace data.\nYou need to reduce monitoring costs, while retaining enough telemetry to analyze token usage and latency trends.\nWhat should you do?",
+    "question_text": "A company has a customer service agent that calls an Azure OpenAI model and sends traces to Azure Monitor Application Insights.\n\nAfter a recent release, average response latency and monitoring costs have increased. Telemetry shows higher token usage per request and a large increase in ingested trace data.\n\nYou need to reduce monitoring costs, while retaining enough telemetry to analyze token usage and latency trends.\n\nWhat should you do?",
     "options": [
       {
         "letter": "a",
@@ -372,7 +372,7 @@
     "explanation": "Multi-turn tests validate that an agent maintains conversational context and correctly completes scenarios that span multiple user messages, making them appropriate for testing end-to-end flows across turns. Plan validation tests focus on tool selection within a single orchestrated plan, response match tests validate output text, and topic match tests validate routing rather than conversational continuity."
   },
   {
-    "question_text": "A company uses the Azure AI Agent Service with separate environments named Dev, Test, and Prod.\nThe company's security team requires network isolation and least-privilege access per environment. The SOC must be able to reconstruct agent activity, including prompts, model steps, and tool calls, during incident investigations.\nYou need to recommend a solution that prevents ad-hoc changes in Prod and provides end-to-end traceability.\nWhat is the best approach to achieve the goal? More than one answer choice may achieve the goal. Select the BEST answer.",
+    "question_text": "A company uses the Azure AI Agent Service with separate environments named Dev, Test, and Prod.\n\nThe company's security team requires network isolation and least-privilege access per environment. The SOC must be able to reconstruct agent activity, including prompts, model steps, and tool calls, during incident investigations.\n\nYou need to recommend a solution that prevents ad-hoc changes in Prod and provides end-to-end traceability.\n\nWhat is the best approach to achieve the goal? More than one answer choice may achieve the goal. Select the BEST answer.",
     "options": [
       {
         "letter": "a",
