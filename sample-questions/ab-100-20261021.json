@@ -1,0 +1,436 @@
+[
+  {
+    "question_text": "A company has two customer support agents. One is built in Microsoft Copilot Studio for Teams, and the other is built in Azure AI Foundry. Both agents send telemetry to the same Azure Monitor Application Insights resource.\n\nDuring peak hours, users report slow responses, increased failures, and higher costs.\n\nYou need to select a monitoring experience in Azure Monitor to analyze agent runs, token usage, costs, and errors across both agents.\n\nWhich Azure Monitor experience should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "the Agent details view",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "the Application map",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "live metrics",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Metrics Explorer",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "references": [],
+    "category": "3.1 Analyze, monitor, and tune AI-powered business solutions",
+    "explanation": "The Agent details view provides an agent-centric experience that surfaces execution runs, latency, token usage, cost signals, and errors across multiple agents in one place. Metrics Explorer focuses on raw metrics and charts but does not provide aggregated agent-level run or cost insights. The Application map visualizes service dependencies rather than agent behavior. Live metrics shows real-time request and failure rates but does not expose agent runs, token usage, or cost information."
+  },
+  {
+    "question_text": "A company has a Microsoft Copilot Studio agent that is deployed in Microsoft Teams and sends telemetry to Azure Monitor Application Insights.\n\nTelemetry from production conversations and from the Copilot Studio test canvas is stored in the same resource and queried by using KQL.\n\nYour daily unique-user metrics are inflated because test canvas conversations are included.\n\nYou need to exclude test-canvas telemetry from monitoring queries.\n\nWhat should you add to the KQL query?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "filter on user_id where it is not empty",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "filter on customDimensions['type'] == 'message'",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "filter on customDimensions['designMode'] == false",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "filter on customDimensions['channelId'] != 'msteams'",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "c"
+    ],
+    "references": [],
+    "category": "3.1 Analyze, monitor, and tune AI-powered business solutions",
+    "explanation": "Copilot Studio test canvas conversations are marked with designMode = true in Application Insights telemetry. Filtering for events where designMode is false removes test traffic, while preserving production usage. Channel, message type, and user ID filters do not reliably distinguish test canvas activity from real user interactions."
+  },
+  {
+    "question_text": "A company uses Microsoft Dynamics 365 Customer Service with a Microsoft Copilot Studio agent packaged in a Microsoft Dataverse solution that includes a custom connector and actions.\n\nThe solution is promoted from an environment named Dev to environments named UAT and Prod by using Azure DevOps. After import, the connector and action settings must be reconfigured manually, causing inconsistencies.\n\nYou need to implement an ALM process that enables the same solution artifact to be promoted without manual configuration changes.\n\nWhat should you include in the solution?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Export the solution as unmanaged for UAT and Prod.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Use a separate solution publisher for each environment.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Exclude connectors and actions and deploy them separately.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Use connection references and environment variables for connector configuration.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "3.3 Design the ALM process for AI-powered business solutions",
+    "explanation": "Connection references and environment variables supply environment-specific values to be supplied at deployment time, while keeping the solution artifact consistent across environments. Unmanaged solutions, separate publishers, and excluding components do not support repeatable ALM practices."
+  },
+  {
+    "question_text": "A company has a customer-support agent built in Microsoft Foundry. The agent uses RAG and a shared Azure AI Search index. The index contains both internal HR documents and public content and is populated by a governed data source that has auditable access controls.\n\nSecurity testing shows that unauthorized users can retrieve internal documents through prompt injection attacks.\n\nYou need to recommend a solution to mitigate this risk. The solution must meet the following requirements:\n\n• Continue to use a shared search index.\n• Prevent unauthorized content from being returned.\n• Maintain auditable governance over the grounding data.\n\nWhat should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Rely on Foundry content filters to block sensitive HR information in responses.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Implement security trimming on Azure AI Search queries based on a caller's ID or role.",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Increase the model context window and provide full internal documents as grounding data.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Replace the shared search index with direct queries to the source systems for each request.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "references": [],
+    "category": "3.4 Design responsible AI, security, governance, risk management, and compliance",
+    "explanation": "Applying security trimming ensures that only documents the caller is authorized to access are retrieved as grounding data, preventing unauthorized content from influencing responses even during prompt injection attacks. Increasing the model context and relying on output filtering do not enforce authorization at retrieval time, and bypassing the shared index violates the design requirement to continue using a centralized search index."
+  },
+  {
+    "question_text": "A company has an internal support agent built in Microsoft Foundry. The agent routes requests to Azure OpenAI models and an Azure AI Search-based RAG knowledge base.\n\nThe agent is used by multiple business units, and the company regularly updates model deployments, routing configurations, and RAG data sources.\n\nCurrent monitoring captures Azure OpenAI metrics only and does NOT provide an audit trail for changes.\n\nYou need to design a solution that provides a centralized audit trail for changes to models and data. The solution must support governance and compliance across business units.\n\nWhat should you include in the solution?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Azure AI Content Safety filters on each model deployment",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Azure API Management in front of the agent endpoint that has configuration change logging enabled",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Azure OpenAI diagnostic settings that send logs and metrics to Azure Monitor",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Azure Policy restrictions on Azure OpenAI model deployments",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "references": [],
+    "category": "3.4 Design responsible AI, security, governance, risk management, and compliance",
+    "explanation": "Adding Azure API Management in front of the agent endpoint provides a centralized control plane where configuration, routing, and integration changes affecting models and data can be logged and audited across business units. The other options focus on safety enforcement or resource-level telemetry and do not create a unified audit trail for changes."
+  },
+  {
+    "question_text": "A company has two production agents: One is built in Microsoft Copilot Studio, and the other is built in Microsoft Foundry. Both agents send telemetry to the same Azure Monitor Application Insights resource.\n\nUsers report intermittent slow responses.\n\nYou confirm that the slowdowns correlate with spikes in token usage.\n\nYou need to identify agent runs that have the highest token usage and review the related model and tool calls across both agents from a single monitoring experience.\n\nWhat should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "the Agent details view",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "Azure Monitor Metrics Explorer",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Azure Monitor workbooks",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "the Microsoft Copilot Studio analytics dashboard",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "references": [],
+    "category": "3.1 Analyze, monitor, and tune AI-powered business solutions",
+    "explanation": "The Agent details view provides an agent-centric execution history that sorts runs by token usage and drills into traces, dependencies, and tool calls across multiple agents. Metrics Explorer shows aggregated metrics without execution detail, Copilot Studio analytics is limited to Copilot Studio agents, and Azure Monitor workbooks support visualization but cannot surface or correlate individual agent runs or their detailed telemetry."
+  },
+  {
+    "question_text": "A company has a Microsoft Copilot Studio agent that uses Azure OpenAI to generate responses and retrieves grounding data from Microsoft Dataverse.\n\nMultiple users can modify the agent's configurations, including the model behavior and data access settings. The company's security team requires that changes affecting the model be traced back to specific users.\n\nYou need to recommend a solution that protects the model by providing accountability for the configuration changes.\n\nWhat should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Use Microsoft Purview to audit any modifications to the agent.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Store agent secrets in Azure Key Vault by using environment variables.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Create data loss prevention (DLP) policies to block non-required connectors.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Enable comprehensive auditing in Microsoft Power Platform and the Dataverse environment.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "3.4 Design responsible AI, security, governance, risk management, and compliance",
+    "explanation": "Enabling comprehensive auditing in Power Platform and the Dataverse environment provides an auditable record of which users changed model-related configurations and data access settings, supporting accountability and protection of the model's integrity. DLP policies, continuous access evaluation, and secret storage meet other security concerns but do not provide traceability for configuration changes that affect the model behavior."
+  },
+  {
+    "question_text": "A company has a Microsoft Dynamics 365 solution that spans Microsoft Dynamics 365 Sales and Dynamics 365 Customer Service.\n\nThe company has an Azure OpenAI agent that generates customer-facing responses in Dynamics 365 Customer Service. The responses must be available for downstream use in Dynamics 365 Sales.\n\nYou need to validate that this cross-app scenario works end-to-end before go-live.\n\nWhich type of test should you run?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "end-to-end tests",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "process tests",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "unit tests",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "user acceptance testing (UAT) tests",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "references": [],
+    "category": "3.2 Manage the testing of AI-powered business solutions",
+    "explanation": "End-to-end tests validate complete business scenarios across multiple applications, making them appropriate for confirming that an agent-generated response created in Dynamics 365 Customer Service can be successfully referenced in Dynamics 365 Sales. Process tests focus on individual workflows, unit tests validate isolated components, and UAT tests concentrate on business validation rather than technical verification of cross-app integration."
+  },
+  {
+    "question_text": "A company has a Microsoft Copilot Studio agent that uses an AI approval stage to approve or reject employee expense reimbursement requests.\n\nIdentical requests sometimes produce different decisions, and the logged rationales are inconsistent.\n\nYou need to ensure that approval decisions are consistent for identical inputs and verify the improvement by reviewing logged decisions.\n\nWhat should you do in the AI approval configuration?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Increase the temperature.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Set the temperature to 0.",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Switch to Microsoft 365 Copilot Tuning.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Enable the AI Response Generated trigger.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "references": [],
+    "category": "3.1 Analyze, monitor, and tune AI-powered business solutions",
+    "explanation": "Lowering the temperature reduces randomness in model output, making approval decisions consistent for identical inputs. Increasing the temperature increases variability, Copilot Tuning does not apply to Copilot Studio approval stages, and enabling triggers does not affect decision determinism."
+  },
+  {
+    "question_text": "A company uses Microsoft Dynamics 365 finance and operations apps and customer engagement apps.\n\nCustomer engagement customizations are delivered as Microsoft Dataverse solutions. Currently, multiple solution publishers are used across related solutions that share components.\n\nYou need to recommend an ALM solution that supports parallel releases, while minimizing deployment risks and conflicts when shared components change.\n\nWhat should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Deploy customer engagement changes to test and production as unmanaged solutions.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Keep multiple publishers and recreate shared components that have new prefixes for each release.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Generate deployable packages directly from development environments and deploy the packages to UAT.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Standardize on a single custom solution publisher and deploy managed solutions to non-development environments.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "3.3 Design the ALM process for AI-powered business solutions",
+    "explanation": "Using a single custom solution publisher with managed solutions reduces component conflicts, supports parallel release branches, and minimizes deployment risks when shared components evolve across environments. Multiple publishers, unmanaged solutions, and developer-built packages increase the likelihood of conflicts and weaken controlled ALM practices."
+  },
+  {
+    "question_text": "A company has a customer service agent that calls an Azure OpenAI model and sends traces to Azure Monitor Application Insights.\nAfter a recent release, average response latency and monitoring costs have increased. Telemetry shows higher token usage per request and a large increase in ingested trace data.\nYou need to reduce monitoring costs, while retaining enough telemetry to analyze token usage and latency trends.\nWhat should you do?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Switch the model deployment to a developer tier.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Disable tracing and rely only on Microsoft Cost Management.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Increase the model context window to reduce the logging volume.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Configure sampling and retention policies in Application Insights.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "3.1 Analyze, monitor, and tune AI-powered business solutions",
+    "explanation": "Configuring sampling and retention policies reduces the telemetry ingestion volume and costs, while preserving sufficient data to analyze trends in token usage and latency. Disabling tracing removes critical observability, increasing the context size increases token and cost pressure, and changing deployment tiers does not address data ingestion monitoring."
+  },
+  {
+    "question_text": "A company has a Microsoft Copilot Studio agent that handles sales and service requests. The agent can create customer cases in Dynamics 365 Customer Service and sales opportunities in Dynamics 365 Sales.\n\nThe company wants to validate an end-to-end scenario in which a user asks the agent to create a customer case and, in a later message in the same conversation, asks the agent to create a related sales opportunity by referencing the previously created case.\n\nYou need to implement an automated, repeatable test to validate that the agent correctly maintains context and completes the scenario across multiple user messages.\n\nWhich type of Copilot Studio Kit test should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "multi-turn",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "plan validation",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "response match",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "topic match",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "references": [],
+    "category": "3.2 Manage the testing of AI-powered business solutions",
+    "explanation": "Multi-turn tests validate that an agent maintains conversational context and correctly completes scenarios that span multiple user messages, making them appropriate for testing end-to-end flows across turns. Plan validation tests focus on tool selection within a single orchestrated plan, response match tests validate output text, and topic match tests validate routing rather than conversational continuity."
+  },
+  {
+    "question_text": "A company uses the Azure AI Agent Service with separate environments named Dev, Test, and Prod.\nThe company's security team requires network isolation and least-privilege access per environment. The SOC must be able to reconstruct agent activity, including prompts, model steps, and tool calls, during incident investigations.\nYou need to recommend a solution that prevents ad-hoc changes in Prod and provides end-to-end traceability.\nWhat is the best approach to achieve the goal? More than one answer choice may achieve the goal. Select the BEST answer.",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Use Azure API Management to handle access and privilege requirements.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Rely on periodic audits and usage analytics to detect changes to Prod.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Deploy the agent with broad access and mitigate risk by caching responses.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Use Azure RBAC to control access to Prod, isolate networks per environment, and enable OpenTelemetry tracing.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "3.3 Design the ALM process for AI-powered business solutions",
+    "explanation": "Using Azure RBAC, environment-specific network isolation, and OpenTelemetry-based tracing enforces preventive ALM controls and provides full traceability of the agent behavior across environments. Allowing direct production changes, relying on audits, and broad access with caching does not prevent unauthorized changes or support end-to-end investigation."
+  },
+  {
+    "question_text": "A company has a Microsoft Copilot Studio agent that answers HR policy questions by using a Microsoft SharePoint Online knowledge source.\n\nAutomated tests in Copilot Studio are failing because the agent's responses do NOT exactly match the expected text, even though the responses convey the correct meaning.\n\nYou need to update the validation criteria to ensure that the tests pass when the response meaning matches the expected answer, without requiring exact wording.\n\nWhich evaluation method should you select for the test cases in a Copilot Studio test set?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "quality test method",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "regression testing",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "similarity test method",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "text match test method",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "c"
+    ],
+    "references": [],
+    "category": "3.2 Manage the testing of AI-powered business solutions",
+    "explanation": "The similarity test method evaluates whether a response is semantically equivalent to the expected answer, making it suitable when wording varies but meaning is correct. Text match requires exact output, quality tests assess response characteristics rather than equivalence, and regression testing is not an evaluation method for individual test cases."
+  }
+]
