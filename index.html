@@ -16,11 +16,20 @@
     <title>MSLearn Prep</title>
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📚</text></svg>">
     <link rel="stylesheet" href="css/styles.css?v=3">
+    <script>
+        // Apply saved theme before paint to avoid a flash of the wrong theme
+        (function() {
+            const saved = localStorage.getItem('theme');
+            const theme = saved || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+            if (theme === 'dark') document.documentElement.setAttribute('data-theme', 'dark');
+        })();
+    </script>
 </head>
 <body>
     <div class="container">
         <!-- ==================== Header ==================== -->
         <div class="header">
+            <button id="theme-toggle-btn" class="theme-toggle-btn" aria-label="Toggle dark mode" title="Toggle dark mode"></button>
             <h1>📚 MSLearn Prep</h1>
             <p>Master Your Microsoft Practice Assessments</p>
         </div>
@@ -36,18 +45,18 @@
             <div id="config-section" class="hidden">
                 <div class="config-info">
                     <p class="filename">📄 <span id="config-filename"></span></p>
-                    <p style="color: #666; font-size: 0.9rem;">
-                        Total questions available: <span id="total-questions" style="font-weight: 600; color: #333;">0</span>
-                        | Categories: <span id="total-categories" style="font-weight: 600; color: #333;">0</span>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">
+                        Total questions available: <span id="total-questions" style="font-weight: 600; color: var(--text-primary);">0</span>
+                        | Categories: <span id="total-categories" style="font-weight: 600; color: var(--text-primary);">0</span>
                     </p>
                 </div>
                 
                 <div style="margin-bottom: 20px;">
-                    <label style="display: block; margin-bottom: 8px; color: #333; font-weight: 500;">
+                    <label style="display: block; margin-bottom: 8px; color: var(--text-primary); font-weight: 500;">
                         Number of questions to practice:
                     </label>
                     <input type="number" id="question-count" class="number-input" min="1" value="10">
-                    <p style="color: #666; font-size: 0.85rem; margin-top: 8px;" id="question-count-help">
+                    <p style="color: var(--text-secondary); font-size: 0.85rem; margin-top: 8px;" id="question-count-help">
                         Enter a number between 1 and the selected categories
                     </p>
                 </div>
@@ -86,12 +95,12 @@
         <!-- ==================== Exam Screen ==================== -->
         <div id="exam-screen" class="hidden">
             <div class="card">
-                <div id="selected-categories-display" style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid #e0e0e0;">
+                <div id="selected-categories-display" style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--border-color);">
                     <div id="selected-categories-header" style="display: flex; align-items: center; justify-content: space-between; cursor: pointer; user-select: none;">
-                        <span style="color: #666; font-size: 0.9rem;">Categories</span>
+                        <span style="color: var(--text-secondary); font-size: 0.9rem;">Categories</span>
                         <span id="categories-toggle-icon" style="transition: transform 0.3s ease;">&#9662;</span>
                     </div>
-                    <div id="selected-categories-list" class="categories-collapsed" style="font-weight: 500; color: #667eea; overflow: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; max-height: 0; opacity: 0;"></div>
+                    <div id="selected-categories-list" class="categories-collapsed" style="font-weight: 500; color: var(--accent); overflow: hidden; transition: max-height 0.3s ease, opacity 0.3s ease; max-height: 0; opacity: 0;"></div>
                 </div>
                 <div class="progress-bar">
                     <div class="progress-fill" id="progress-fill"></div>
@@ -114,7 +123,7 @@
                         📌 Mark for Review
                     </button>
                 </div>
-                <p style="text-align: center; color: #666; font-size: 0.85rem; margin-top: 15px;">
+                <p style="text-align: center; color: var(--text-secondary); font-size: 0.85rem; margin-top: 15px;">
                     💡 Use <strong>←</strong> and <strong>→</strong> arrow keys to navigate between questions
                 </p>
             </div>

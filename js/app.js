@@ -60,8 +60,34 @@ function cacheElements() {
 document.addEventListener('DOMContentLoaded', async () => {
     cacheElements();
     setupEventListeners();
+    setupThemeToggle();
     await loadAvailableQuestionFiles();
 });
+
+// ==================== Theme Toggle ====================
+function setupThemeToggle() {
+    const btn = document.getElementById('theme-toggle-btn');
+    if (!btn) return;
+
+    const updateButton = (theme) => {
+        btn.textContent = theme === 'dark' ? '☀️' : '🌙';
+    };
+
+    const currentTheme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
+    updateButton(currentTheme);
+
+    btn.addEventListener('click', () => {
+        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+        const nextTheme = isDark ? 'light' : 'dark';
+        if (nextTheme === 'dark') {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+            document.documentElement.removeAttribute('data-theme');
+        }
+        localStorage.setItem('theme', nextTheme);
+        updateButton(nextTheme);
+    });
+}
 
 // Available question files
 let availableQuestionFiles = [];
@@ -116,12 +142,12 @@ function renderFileSelector() {
     // Create file selector UI
     let selectorHtml = `
         <div id="file-selector" style="margin-bottom: 20px;">
-            <h3 style="margin-bottom: 15px; color: #333;">📚 Select a Question Bank</h3>
+            <h3 style="margin-bottom: 15px; color: var(--text-primary);">📚 Select a Question Bank</h3>
     `;
     
     if (availableQuestionFiles.length === 0) {
         selectorHtml += `
-            <p style="color: #666; margin-bottom: 15px;">No pre-loaded question files found.</p>
+            <p style="color: var(--text-secondary); margin-bottom: 15px;">No pre-loaded question files found.</p>
         `;
     } else {
         selectorHtml += `<div class="file-list" style="display: flex; flex-direction: column; gap: 10px; margin-bottom: 20px;">`;
@@ -129,13 +155,12 @@ function renderFileSelector() {
             const displayName = filename.replace('.json', '').split('-').slice(0, 2).join('-').toUpperCase();
             selectorHtml += `
                 <div class="file-item" onclick="selectQuestionFile('${filename}')" 
-                     style="padding: 15px; border: 2px solid #e0e0e0; border-radius: 8px; cursor: pointer; 
-                            transition: all 0.2s ease; display: flex; align-items: center; gap: 10px;
-                            hover: border-color: #667eea;">
+                     style="padding: 15px; border: 2px solid var(--border-color); border-radius: 8px; cursor: pointer; 
+                            transition: all 0.2s ease; display: flex; align-items: center; gap: 10px;">
                     <span style="font-size: 1.5rem;">📄</span>
                     <div style="flex: 1;">
-                        <div style="font-weight: 600; color: #333;">${displayName}</div>
-                        <div style="font-size: 0.85rem; color: #666;">${filename}</div>
+                        <div style="font-weight: 600; color: var(--text-primary);">${displayName}</div>
+                        <div style="font-size: 0.85rem; color: var(--text-secondary);">${filename}</div>
                     </div>
                     <button class="btn btn-primary" style="padding: 8px 16px; font-size: 0.9rem;">Select</button>
                 </div>
@@ -466,17 +491,17 @@ function showResumePrompt(savedState) {
     const resumeHtml = `
         <div id="resume-prompt" class="modal-overlay">
             <div class="modal-content">
-                <h3 style="margin-bottom: 15px; color: #333;">📚 Resume Previous Session?</h3>
-                <p style="margin-bottom: 10px; color: #333; font-weight: 600; font-size: 1.1rem;">
+                <h3 style="margin-bottom: 15px; color: var(--text-primary);">📚 Resume Previous Session?</h3>
+                <p style="margin-bottom: 10px; color: var(--text-primary); font-weight: 600; font-size: 1.1rem;">
                     ${questionBankName}
                 </p>
-                <p style="margin-bottom: 10px; color: #666; line-height: 1.5;">
+                <p style="margin-bottom: 10px; color: var(--text-secondary); line-height: 1.5;">
                     ${isFinished 
                         ? `You have a <strong>completed</strong> exam from <strong>${new Date(savedState.timestamp).toLocaleString()}</strong>.`
                         : `You have an unfinished exam from <strong>${new Date(savedState.timestamp).toLocaleString()}</strong>.`
                     }
                 </p>
-                <p style="margin-bottom: 20px; color: #667eea; font-weight: 500;">
+                <p style="margin-bottom: 20px; color: var(--accent); font-weight: 500;">
                     ${isFinished 
                         ? `All ${totalCount} questions completed (${progressPercent}%)`
                         : `Progress: ${answeredCount}/${totalCount} answered (${progressPercent}%)`
@@ -612,7 +637,7 @@ function showSummaryFromSession() {
 // ==================== UI Rendering ====================
 function renderSelectedCategories() {
     if (selectedCategoriesList.length > 0) {
-        elements.selectedCategoriesList.innerHTML = '<ul style="margin: 0; padding-left: 20px; color: #667eea;">' +
+        elements.selectedCategoriesList.innerHTML = '<ul style="margin: 0; padding-left: 20px; color: var(--accent);">' +
             selectedCategoriesList.map(cat => `<li style="margin-bottom: 4px;">${cat}</li>`).join('') +
             '</ul>';
     } else {
@@ -847,8 +872,8 @@ function updateMarkButton() {
     
     const isMarked = examSession.isMarked(question.question_number);
     elements.markBtn.innerHTML = isMarked ? '📌 Unmark Question' : '📌 Mark for Review';
-    elements.markBtn.style.background = isMarked ? '#ff9800' : '#f5f5f5';
-    elements.markBtn.style.color = isMarked ? 'white' : '#666';
+    elements.markBtn.style.background = isMarked ? '#ff9800' : 'var(--surface-alt)';
+    elements.markBtn.style.color = isMarked ? 'white' : 'var(--text-secondary)';
 }
 
 // ==================== Question Navigation ====================
@@ -992,7 +1017,7 @@ function showReviewDetail(q, result, userAnswer, displayNumber) {
         </div>
         <p><strong>Your answer:</strong> ${(userAnswer || []).join(', ') || 'None'}</p>
         <p><strong>Correct answer:</strong> ${q.correct_answers.join(', ')}</p>
-        <p style="color: ${result ? '#4caf50' : '#f44336'}; font-weight: 600; margin-top: 10px;">
+        <p style="color: ${result ? 'var(--success-border)' : 'var(--error-border)'}; font-weight: 600; margin-top: 10px;">
             ${result ? '✓ Correct' : '✗ Incorrect'}
         </p>
         ${q.explanation ? `<div class="explanation"><h4>Explanation</h4><p>${q.explanation}</p></div>` : ''}
@@ -1009,8 +1034,8 @@ function showReviewDetail(q, result, userAnswer, displayNumber) {
 function updateSummaryMarkButton(isMarked) {
     if (elements.summaryMarkBtn) {
         elements.summaryMarkBtn.innerHTML = isMarked ? '📌 Unmark Question' : '📌 Mark for Review';
-        elements.summaryMarkBtn.style.background = isMarked ? '#ff9800' : '#f5f5f5';
-        elements.summaryMarkBtn.style.color = isMarked ? 'white' : '#666';
+        elements.summaryMarkBtn.style.background = isMarked ? '#ff9800' : 'var(--surface-alt)';
+        elements.summaryMarkBtn.style.color = isMarked ? 'white' : 'var(--text-secondary)';
     }
 }
 
