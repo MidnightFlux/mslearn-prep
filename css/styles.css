@@ -45,6 +45,7 @@
     --info-text: #64b5f6;
     --shadow-color: rgba(0,0,0,0.5);
     --modal-shadow-color: rgba(0,0,0,0.6);
+    color-scheme: dark;
 }
 
 /* ==================== Base Styles ==================== */
@@ -61,6 +62,7 @@ body {
     min-height: 100vh;
     padding: 20px;
     transition: background 0.3s ease, color 0.3s ease;
+    accent-color: var(--accent);
 }
 
 /* ==================== Layout ==================== */
