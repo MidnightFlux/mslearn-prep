@@ -1,0 +1,1709 @@
+[
+  {
+    "question_text": "A company has two production agents. One is built in Microsoft Copilot Studio, and the other is built in Microsoft Foundry. Both agents send telemetry to the same Azure Monitor Application Insights resource.\n\nYou need to identify agent runs that have the highest token usage and analyze related traces, dependencies, and exceptions across both agents.\n\nWhat should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Azure Monitor Logs",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "Azure Monitor Metrics Explorer",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Azure Monitor workbooks",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "the Microsoft Copilot Studio analytics dashboard",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "references": [],
+    "category": "3.1 Analyze, monitor, and tune AI-powered business solutions",
+    "explanation": "Azure Monitor Logs provides a centralized, query-based view of Application Insights telemetry that enables the investigation of individual agent runs and the correlation of token usage with traces, dependencies, and exceptions. Metrics Explorer shows aggregated trends, Copilot Studio analytics is limited to Copilot Studio agents, and Azure Monitor workbooks support visualization but not the detailed, query-driven diagnostics required for this investigation."
+  },
+  {
+    "question_text": "A company uses Dynamics 365 Customer Service, Microsoft Teams, and Microsoft Outlook. Service representatives work primarily in Teams and Outlook.\n\nYou need to enable AI features that enable representatives to:\n\n- View AI-generated case summaries in Outlook and Teams.\n\n- Use natural language prompts in Teams to retrieve case data and related knowledge.\n\nWhat should you do?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Enable Copilot capabilities only within Dynamics 365 Customer Service",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Enable Copilot in Dynamics 365 finance and operations apps and use generative help and guidance",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Create a custom Copilot Studio agent for Word and Excel to summarize cases and email the results",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Configure Microsoft 365 Copilot for Service features, including case summaries in Outlook and Teams and chat with service data in Teams",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "2.3 Orchestrate configuration for prebuilt agents and apps",
+    "explanation": "Microsoft 365 Copilot for Service is designed to surface AI-generated case summaries in Outlook and Teams and enable natural language interaction with service data directly in Teams. The other options either limit Copilot usage to Dynamics 365 only, target unrelated workloads, or require custom solutions that are unnecessary for this scenario."
+  },
+  {
+    "question_text": "A company uses Microsoft Dynamics 365 Customer Service with a Microsoft Dataverse app and an AI agent. The solution is split into a shared core solution and a dependent service solution.\n\nThe solution is deployed across environments named Dev, Test, and Prod.\n\nThe development team must support parallel development for production hotfixes and the next solution release. Recent direct changes in Prod created unmanaged customizations and deployment inconsistencies.\n\nYou need to recommend an ALM solution that enforces controlled deployments and supports parallel development.\n\nWhat should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Use separate publishers for each solution and deploy managed solutions in any order.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Deploy unmanaged solutions to Test and Prod for emergency fixes and rely on solution layering.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Enable direct production changes and export unmanaged solutions from production on a regular basis.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Use unmanaged solutions only in development, deploy managed solutions to all non-development environments, and use CI/CD pipelines for the deployments.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "3.3 Design the ALM process for AI-powered business solutions",
+    "explanation": "Using unmanaged solutions only in development and deploying managed solutions to Test and Prod through CI/CD pipelines enforces controlled, repeatable deployments, prevents direct production changes, and supports parallel development for hotfixes and future releases by maintaining proper solution layering and versioning; Incorrect - Allowing direct production changes introduces unmanaged customizations and breaks ALM discipline; Incorrect - Deploying unmanaged solutions to Test and Prod increases the risk of inconsistencies and uncontrolled changes; Incorrect - Using separate publishers and deploying managed solutions in any order does not prevent conflicts or ensure controlled deployment sequencing."
+  },
+  {
+    "question_text": "A company uses a Microsoft Copilot Studio agent with generative orchestration to support a customer service process. The agent uses one tool to create cases in Dynamics 365 Customer Service and another to retrieve order status from Dynamics 365 Supply Chain Management. The project uses Copilot Studio Kit for automated testing.\n\nAfter recent changes to the agent instructions, the agent sometimes answers order status requests directly, without invoking the order-status tool.\n\nYou need to automatically and repeatedly validate that the agent includes the correct tool in its execution plan without relying on response text matching.\n\nWhich type of Copilot Studio Kit test should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "multi-turn",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "plan validation",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "response match",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "topic match",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "references": [],
+    "category": "3.2 Manage the testing of AI-powered business solutions",
+    "explanation": "Plan validation tests confirm whether a Copilot Studio agent's generated execution plan includes the expected tools, making the tests appropriate for validating orchestrated behavior without relying on non-deterministic response text. Response match tests focus on output wording, topic match tests validate conversational routing, and multi-turn tests evaluate dialogue flow rather than individual tool-selection decisions."
+  },
+  {
+    "question_text": "A company has a Microsoft Copilot Studio agent used by employees to answer HR policy questions. The agent grounds responses in Microsoft SharePoint Online content and employee records stored in Microsoft Dynamics 365.\n\nDuring testing, the agent attempts to retrieve data beyond a user's normal HR permissions.\n\nYou need to ensure that the solution design complies with the Microsoft responsible AI principle of privacy and security by returning only data that each signed-in user is authorized to access.\n\nWhich design change best complies with the responsible AI principle? More than one answer choice may achieve the goal. Select the BEST answer.",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Add a welcome message stating that users must not request sensitive data.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Rely on TLS encryption between Copilot Studio, Dynamics 365, and Azure OpenAI.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Grant the agent a single service account with broad read access to SharePoint Online and Dynamics 365.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Enforce user-scoped access by retrieving data based on the signed-in user's permissions by using Microsoft Entra and the principle of least privilege.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "3.4 Design responsible AI, security, governance, risk management, and compliance",
+    "explanation": "Enforcing user-scoped access ensures that the agent respects existing authorization boundaries and returns only data that each user is permitted to access, complying with the principle of least privilege and the responsible AI principle of privacy and security. A shared service account bypasses user permissions, encryption protects data in transit but does not enforce authorization, and user guidance does not technically prevent unauthorized data access."
+  },
+  {
+    "question_text": "A company deploys Microsoft 365 Copilot for Sales to sellers who use Microsoft Teams and Outlook.\n\nSales meetings are recorded and transcribed in Teams, but meeting insights are not generated.\n\nYou need to ensure that meeting insights are generated.\n\nWhat should you do?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Turn off Sales Chat in the Access settings.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Ensure that the Sales agent version in Teams is 1.0.9 or later.",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Ensure that the email thread contains more than 1,000 characters.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Disable optional connected experiences in Microsoft 365 Apps policies.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "references": [],
+    "category": "2.3 Orchestrate configuration for prebuilt agents and apps",
+    "explanation": "Meeting insights in Microsoft 365 Copilot for Sales require a supported version of the Sales agent in Microsoft Teams, and version 1.0.9 or later enables this functionality; Disabling optional connected experiences would prevent Copilot features from working; Email thread length is unrelated to meeting insights generation; Turning off Sales Chat would disable Copilot capabilities rather than enable meeting insights."
+  },
+  {
+    "question_text": "A company has a Microsoft Copilot Studio agent integrated with Microsoft Dynamics 365 Customer Service telephony for inbound calls.\n\nYou need to enable Speech & DTMF and add the required voice system topics without rewriting existing topics or changing conversation logic.\n\nWhat should you do in Copilot Studio?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Enable Optimize for voice and publish the agent.",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "Disable Optimize for voice and publish the agent.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Enable the Telephony channel and keep the agent in text modality.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Add an End conversation node to the first topic and publish the agent.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "references": [],
+    "category": "2.2 Design extensibility of AI solutions",
+    "explanation": "Enabling Optimize for voice automatically activates Speech & DTMF support and adds the required voice system topics, while preserving existing conversation logic. Enabling the Telephony channel alone or modifying individual topics does not enable voice modality or required system behaviors."
+  },
+  {
+    "question_text": "A company uses a Microsoft Copilot Studio agent that is deployed to environments named Dev, Test, and Prod by using solutions.\n\nSome agent-related components are NOT solution-aware and must be applied after solution import to ensure correct operation.\n\nYou need to identify which components must be configured after deployment when promoting the agent.\n\nWhich two components should you identify? Each correct answer presents part of the solution.",
+    "options": [
+      {
+        "letter": "a",
+        "text": "deployed channels, such as Microsoft Teams or a website",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "environment variables used for environment-specific values",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "the Application Insights settings for the agent",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "topics and actions included in the Copilot Studio solution",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a",
+      "c"
+    ],
+    "references": [],
+    "category": "3.3 Design the ALM process for AI-powered business solutions",
+    "explanation": "Deployed channels and the Application Insights settings are not solution-aware and must be configured after importing the solution into each environment. Environment variables, topics, and actions are included in the solution package and do not require a post-deployment configuration."
+  },
+  {
+    "question_text": "A company uses Microsoft 365 Copilot Chat without usage billing for most employees.\n\nA small pilot group has access to Microsoft Copilot Studio. Tenant policy prevents agents from accessing Microsoft SharePoint Online or Microsoft Graph connector content unless usage billing is enabled.\n\nYou need to provide an HR policy assistant in Copilot that:\n\n- Is grounded only in a specific SharePoint site that contains approved HR content\n\n- Is available to 200 users in the company's HR department\n\nYou need to recommend a Copilot licensing and billing approach.\n\nWhat should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Copilot (licensed) and only Agent Store agents for the HR users.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Copilot Chat without usage billing and a custom engine agent that uses Microsoft Graph grounding.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Copilot Chat without usage billing and a declarative agent that uses SharePoint as a data source.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Copilot Chat with usage billing and an agent for Copilot that is built by using Copilot Studio and uses SharePoint as a data source.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "1.2 Design overall AI strategy for business solutions",
+    "explanation": "Using Copilot Chat with usage billing enables a Copilot Studio agent to access SharePoint content through metered connectors, which is required to ground responses in approved HR policy content, while limiting availability to a specific user group. Copilot Chat without usage billing cannot access SharePoint or Microsoft Graph grounding. Agent Store agents do not meet the custom grounding requirement, and custom engine agents bypass the Copilot extensibility model and violate tenant policy constraints."
+  },
+  {
+    "question_text": "A company uses Microsoft Dynamics 365 Customer Service and provides agents with a Copilot experience during live chats.\n\nPolicy and troubleshooting content is stored as unstructured documents in Azure Blob Storage, and agents must search across thousands of documents.\n\nYou need to recommend a RAG solution that supports semantic search, grounds responses in the latest and most relevant content, and runs on managed Azure services within a single Azure region.\n\nWhich combination of services should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Azure AI Services with Azure Blob Storage and custom embeddings",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Azure Cosmos DB with integrated vector search and Azure OpenAI",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Azure OpenAI and Azure AI Search",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "Microsoft Copilot Studio with Azure Blob Storage grounding",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "c"
+    ],
+    "references": [],
+    "category": "2.1 Design AI and agents for business solutions",
+    "explanation": "Azure AI Search provides scalable, semantic and vector-based retrieval over large collections of unstructured documents, and Azure OpenAI generates grounded responses using the retrieved content. Together, they form the standard managed RAG architecture on Azure and support single-region deployments. Azure Cosmos DB with vector search does not provide semantic ranking or large-scale document indexing, Copilot Studio grounding does not replace a full retrieval engine, and Azure AI Services with Blob Storage and custom embeddings lack a managed search layer for semantic retrieval."
+  },
+  {
+    "question_text": "A company packages a Microsoft Copilot Studio agent in a managed Microsoft Power Platform solution and deploys the agent to production by using a CI/CD pipeline.\n\nAfter the deployment, some required settings and access configurations are missing because they were excluded from the solution package.\n\nYou need to design an ALM solution to ensure that the production deployments result in a usable agent.\n\nWhat should you include in the release process?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Replace the environment variables and connection references with hard-coded values.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Configure the missing settings directly in the production environment after each deployment.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Export the solution as unmanaged, so that all the runtime settings are included during import.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Add post-deployment steps to configure the required settings, deploy channels, and apply sharing in the target environment.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "3.3 Design the ALM process for AI-powered business solutions",
+    "explanation": "Including post-deployment steps in the release process ensures that the required configuration and access settings that are not solution-aware are applied consistently after deployment. Exporting unmanaged solutions, configuring production directly, and hard coding values breaks ALM best practices and undermines repeatable, controlled deployments."
+  },
+  {
+    "question_text": "A company deploys Microsoft 365 Copilot and publishes multiple Copilot Studio agents to Microsoft 365 Copilot Chat.\n\nYou need to recommend reporting options. The solution must meet the following requirements:\n\n- Enable the company's security team to search audit records that include user prompt text.\n\n- Provide the company's AI platform team with tenant-wide usage visibility across all Copilot Studio agents, including agents they did NOT author.\n\nWhich two reporting options should you recommend? Each correct answer presents part of the solution.",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Copilot Studio Analytics",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Microsoft Purview audit logs",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Microsoft Power Platform admin center reports",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "Microsoft 365 admin center Copilot usage reports",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b",
+      "c"
+    ],
+    "references": [],
+    "category": "2.3 Orchestrate configuration for prebuilt agents and apps",
+    "explanation": "Microsoft Purview audit logs enable security teams to search audit records that include user prompt content, meeting the compliance requirement. Power Platform admin center reports provide tenant-wide visibility into Copilot Studio agent usage across all environments, including agents not authored by the viewer. Each option addresses a different requirement, and both are required to fully meet the solution needs. Copilot Studio Analytics and Microsoft 365 Copilot usage reports do not provide prompt-level auditing or the full tenant-wide scope."
+  },
+  {
+    "question_text": "A company has a Microsoft Copilot Studio agent that answers HR policy questions by using a Microsoft SharePoint Online knowledge source.\n\nAutomated tests in Copilot Studio are failing because the agent's responses do NOT exactly match the expected text, even though the responses convey the correct meaning.\n\nYou need to update the validation criteria to ensure that the tests pass when the response meaning matches the expected answer, without requiring exact wording.\n\nWhich evaluation method should you select for the test cases in a Copilot Studio test set?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "quality test method",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "regression testing",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "similarity test method",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "text match test method",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "c"
+    ],
+    "references": [],
+    "category": "3.2 Manage the testing of AI-powered business solutions",
+    "explanation": "The similarity test method evaluates whether a response is semantically equivalent to the expected answer, making it suitable when wording varies but meaning is correct. Text match requires exact output, quality tests assess response characteristics rather than equivalence, and regression testing is not an evaluation method for individual test cases."
+  },
+  {
+    "question_text": "A company uses Microsoft Dynamics 365 Customer Service with a Microsoft Copilot Studio agent packaged in a Microsoft Dataverse solution that includes a custom connector and actions.\n\nThe solution is promoted from an environment named Dev to environments named UAT and Prod by using Azure DevOps. After import, the connector and action settings must be reconfigured manually, causing inconsistencies.\n\nYou need to implement an ALM process that enables the same solution artifact to be promoted without manual configuration changes.\n\nWhat should you include in the solution?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Export the solution as unmanaged for UAT and Prod.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Use a separate solution publisher for each environment.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Exclude connectors and actions and deploy them separately.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Use connection references and environment variables for connector configuration.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "3.3 Design the ALM process for AI-powered business solutions",
+    "explanation": "Connection references and environment variables supply environment-specific values to be supplied at deployment time, while keeping the solution artifact consistent across environments. Unmanaged solutions, separate publishers, and excluding components do not support repeatable ALM practices."
+  },
+  {
+    "question_text": "A company uses a Microsoft Copilot Studio agent in a Microsoft Power Apps canvas app to answer policy questions. The app allows anonymous access, and the agent uses a prompt node grounded in policy documents and internal websites.\n\nUsers report that the agent sometimes returns answers if the information is not present in the grounding content.\n\nYou need to ensure that the prompt returns a predictable response when information is missing, while keeping the prompt concise.\n\nWhat should you do in the prompt node instructions?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Add stricter system instructions telling the model NOT to hallucinate.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Increase grounding weight, so the model relies more heavily on retrieved content.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Add more grounding sources, so the model has additional context to answer questions.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Instruct the prompt to return a fixed fallback value when the answer is NOT present in the provided inputs.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "2.1 Design AI and agents for business solutions",
+    "explanation": "Instructing the prompt to return a fixed fallback value when the answer is not present ensures predictable behavior and prevents the agent from generating unsupported responses. This approach keeps prompt instructions concise and explicitly defines a failure path, which is especially important for anonymous access scenarios. Adding more grounding sources, tightening system instructions, and adjusting grounding weight do not guarantee deterministic fallback behavior when required information is missing."
+  },
+  {
+    "question_text": "A company combines Microsoft Dataverse data with SAP data in a single Microsoft Power BI dataset. The dataset must enforce per-user data access and be reusable by other AI solutions.\n\nUsers are added frequently, and the solution must avoid creating new row-level security (RLS) roles for each user.\n\nYou need to recommend an approach that meets the requirements.\n\nWhat should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Apply RLS rules only on fact tables.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Create a separate dataset for each business unit.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Create multiple static RLS roles and use the USERNAME() function in role filters.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Create a small number of RLS roles by using dynamic rules and the USERPRINCIPALNAME() function in role filters.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "1.1 Analyze requirements for AI-powered business solutions",
+    "explanation": "Dynamic RLS that uses USERPRINCIPALNAME() allows per-user access to be enforced through data-driven rules, which scales as users are added without requiring new roles. Static roles increase administrative overhead, filtering only fact tables does not address user-specific access control, and creating separate datasets reduces reuse and complicates governance for downstream AI solutions."
+  },
+  {
+    "question_text": "A company has a customer support agent that uses Azure OpenAI and retrieves information from confidential internal policy documents to generate answers.\n\nOnly the members of the company's support team are authorized to access this data.\n\nSecurity testing shows that prompt injection attacks can cause the agent to return confidential content.\n\nYou need to ensure the solution design complies with the Microsoft responsible AI principle of privacy and security by enforcing server-side inspection of both user prompts and model responses.\n\nWhich design change best complies with the responsible AI principle? More than one answer choice may achieve the goal. Select the BEST answer.",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Add client-side content moderation to the chat UI.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Fine-tune the Azure OpenAI model on confidential policy documents.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Provide user training and warning banners about confidential data.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Implement a server-side gateway or an orchestration layer that will inspect and filters requests and responses.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "3.4 Design responsible AI, security, governance, risk management, and compliance",
+    "explanation": "A server-side gateway and an orchestration layer provide enforceable, centralized inspection and filtering of both inbound prompts and outbound responses before content reaches users, which complies with the responsible AI principle of security and privacy. Client-side moderation and user guidance are not reliable enforcement mechanisms, and model fine-tuning does not provide consistent or auditable protection against prompt injection-driven data leakage."
+  },
+  {
+    "question_text": "A company uses Microsoft Dynamics 365 Customer Service with Copilot to answer case-related questions.\n\nYou need to add autonomous agents that can retrieve approved knowledge and invoke tools for limited-service actions. The solution must support centralized governance and monitoring in Azure and enable both no-code and code-first development with GitHub-based workflows, without managing infrastructure.\n\nWhich platform should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Azure Machine Learning",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Microsoft 365 Agents SDK only",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Microsoft Copilot Studio",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Microsoft Foundry Agent Service",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "2.1 Design AI and agents for business solutions",
+    "explanation": "Foundry Agent Service provides fully managed agent hosting in Azure with built-in governance, monitoring, RBAC, and support for both no-code and code-first development workflows. Copilot Studio alone does not meet the advanced code-first and centralized hosting requirements, Machine Learning requires infrastructure management, and the Microsoft 365 Agents SDK alone does not provide a managed agent platform."
+  },
+  {
+    "question_text": "A company has two production agents: One is built in Microsoft Copilot Studio, and the other is built in Microsoft Foundry. Both agents send telemetry to the same Azure Monitor Application Insights resource.\n\nUsers report intermittent slow responses.\n\nYou confirm that the slowdowns correlate with spikes in token usage.\n\nYou need to identify agent runs that have the highest token usage and review the related model and tool calls across both agents from a single monitoring experience.\n\nWhat should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "the Agent details view",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "Azure Monitor Metrics Explorer",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Azure Monitor workbooks",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "the Microsoft Copilot Studio analytics dashboard",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "references": [],
+    "category": "3.1 Analyze, monitor, and tune AI-powered business solutions",
+    "explanation": "The Agent details view provides an agent-centric execution history that sorts runs by token usage and drills into traces, dependencies, and tool calls across multiple agents. Metrics Explorer shows aggregated metrics without execution detail, Copilot Studio analytics is limited to Copilot Studio agents, and Azure Monitor workbooks support visualization but cannot surface or correlate individual agent runs or their detailed telemetry."
+  },
+  {
+    "question_text": "A company has multiple Microsoft Copilot Studio agents that create and update service desk tickets by calling an internal ITSM API.\n\nThe same ticketing actions must be shared across all agents, and the API schema changes frequently.\n\nYou need to define the ticketing actions once and have updates automatically apply to all agents.\n\nWhat should you do?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Add REST API calls directly inside agent topics.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Use the computer use tool to automate the ITSM web interface.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Create a separate API plugin for each agent and republish each agent when schemas change.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Connect each agent to a Model Context Protocol (MCP) server that publishes the ticketing tools.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "2.2 Design extensibility of AI solutions",
+    "explanation": "MCP enables the centralized definition and hosting of tool schemas that can be shared across multiple Copilot Studio agents. When the API changes, updates are made once on the MCP server and automatically reflected in all connected agents. Per-agent plugins, embedded REST calls, and UI automation do not provide centralized, reusable tool management."
+  },
+  {
+    "question_text": "A company has a declarative agent built in Microsoft Copilot Studio and published to Microsoft Teams and SharePoint Online. The agent answers HR policy questions.\n\nMost users do NOT have Microsoft 365 Copilot licenses, and Copilot Studio usage-based billing is disabled.\n\nYou need to ensure that users can access the agent without using organizational knowledge grounding that requires licensing or metering.\n\nWhich knowledge source configuration should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Use only public web URLs and agent instructions.",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "Add Microsoft Outlook email as a knowledge source.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Add specific Teams chat threads as knowledge sources.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Add the SharePoint site of the company's HR department as a knowledge source.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "references": [],
+    "category": "2.2 Design extensibility of AI solutions",
+    "explanation": ""
+  },
+  {
+    "question_text": "A company uses Microsoft 365 Copilot and a third-party agent.\n\nThe company has Microsoft SharePoint Online content that is protected by using Microsoft Purview sensitivity labels that restrict programmatic access.\n\nSecurity testing shows that users can paste regulated content into Copilot prompts and ask the agent to summarize and share the content externally.\n\nYou need to recommend a solution that mitigates prompt misuse, enforces data access controls, and supports the investigation and retention of Copilot interactions.\n\nWhat should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Rely on the privacy terms of the third-party agent and rewrite the prompt instructions.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Enable web search connected experiences and export Microsoft Teams chat logs for retention.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Disable connected experiences in Microsoft 365 Apps and rely on users to clear the Copilot history.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Rely on Copilot permission trimming and Microsoft Purview Information Protection usage rights and use Microsoft Purview to search and retain Copilot interaction records.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "3.4 Design responsible AI, security, governance, risk management, and compliance",
+    "explanation": "Using Microsoft 365 Copilot permission trimming together with Information Protection usage rights enforces access boundaries that prevent protected content from being processed, while Microsoft Purview enables the investigation and retention of Copilot prompts and responses. User-managed deletion, chat log exports, and prompt wording changes do not reliably mitigate prompt manipulation or enforce data protection controls."
+  },
+  {
+    "question_text": "A company has a Microsoft Power Platform solution that includes a Microsoft Copilot Studio agent, Microsoft Power Automate flows, and a custom connector. The solution is deployed across environments named Dev, Test, and Prod.\n\nThe company requires sequential deployments, version control in Git, and automated deployments that use Azure Pipelines without granting makers elevated privileges in downstream environments.\n\nYou need to recommend an ALM solution that meets the requirements.\n\nWhat should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "ALM Accelerator for Power Platform",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "Application Insights in Azure Monitor",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Pipelines for Power Platform",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "the manual export and import of solutions between environments",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "references": [],
+    "category": "3.3 Design the ALM process for AI-powered business solutions",
+    "explanation": "The ALM Accelerator for Power Platform provides Git-based version control, Azure Pipelines automation, and controlled deployments across environments, without requiring makers to have elevated permissions in Test or Prod. Manual solution movement, monitoring tools, and simplified pipelines do not meet the ALM and governance requirements."
+  },
+  {
+    "question_text": "A company has Microsoft Dynamics 365 Contact Center and a Microsoft Copilot Studio agent connected to a voice workstream. The agent can escalate to a service representative.\n\nVoice callers who complete self-service remain connected even after the agent sends a closing message.\n\nYou need to recommend a method to ensure that non-escalated voice calls are explicitly ended in Dynamics 365 Contact Center.\n\nWhat should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Set the closeomichannelconversation variable to true directly in the agent instructions.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Configure the voice workstream to use automatic wrap-up rules to close calls after self-service.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Add a goodbye topic that uses the End conversation node without calling Microsoft Power Automate.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Create an end-of-conversation topic that calls a Microsoft Power Automate flow to return CloseOmnichannelConversation = true, and then end the conversation.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "2.1 Design AI and agents for business solutions",
+    "explanation": "Voice workstreams in Dynamics 365 Contact Center do not automatically close when a Copilot Studio agent finishes a self-service interaction. The agent must explicitly trigger a call termination by invoking a Power Automate flow that returns the CloseOmnichannelConversation value, and then ending the conversation. Setting variables inside the agent, relying on goodbye topics, and using wrap-up rules do not close an active voice call."
+  },
+  {
+    "question_text": "A company uses Microsoft Dynamics 365 Supply Chain Management. Copilot for finance and operations apps is enabled. Microsoft Dataverse virtual tables for finance and operations are available, including the on-hand inventory virtual table.\n\nYou need to enable an existing Microsoft Copilot Studio agent to answer questions about on-hand inventory by using live, structured finance and operations data.\n\nWhat should you do in Copilot Studio?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Build a custom orchestration workflow by using the Microsoft Agent Framework SDK.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Sync inventory data to Dataverse by using Dual-write and use only the native Dataverse table.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Create a new declarative agent for Microsoft 365 Copilot and add the virtual table as knowledge.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Add the Finance and Operations virtual table as a Dynamics 365 knowledge source to the agent and publish the agent.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "2.3 Orchestrate configuration for prebuilt agents and apps",
+    "explanation": "Copilot Studio supports adding Dataverse Finance and Operations virtual tables directly as Dynamics 365 knowledge sources, enabling grounded responses based on live operational data without data replication or custom development. Creating a new agent by using Dual-write or building a custom SDK workflow is unnecessary in this scenario."
+  },
+  {
+    "question_text": "A company has a Microsoft Copilot Studio agent that answers the HR questions of employees by using a generative answers node.\n\nEmployees often paste content into questions that includes employee names and case details.\n\nThe current design uses public websites as the knowledge source, which can send personal data outside the tenant boundary during retrieval.\n\nYou need to recommend a solution that prevents personal data from being sent outside the tenant, while still providing grounded HR answers.\n\nWhat should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Use an Azure AI Search index that contains approved HR content.",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "Use the model's general knowledge without a configured knowledge source.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Use public websites with custom prompt instructions to ignore personal data.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Configure Copilot Studio message moderation to remove the personal data before retrieval.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "references": [],
+    "category": "3.4 Design responsible AI, security, governance, risk management, and compliance",
+    "explanation": "Using an Azure AI Search index with approved HR content keeps retrieval within the tenant boundary and prevents personal data from being sent to external services, while still providing grounded responses. Message moderation and prompt instructions do not guarantee that personal data is excluded from outbound retrieval queries, and relying on general model knowledge does not provide controlled or auditable HR answers."
+  },
+  {
+    "question_text": "A company has two customer support agents. One is built in Microsoft Copilot Studio for Teams, and the other is built in Azure AI Foundry. Both agents send telemetry to the same Azure Monitor Application Insights resource.\n\nDuring peak hours, users report slow responses, increased failures, and higher costs.\n\nYou need to select a monitoring experience in Azure Monitor to analyze agent runs, token usage, costs, and errors across both agents.\n\nWhich Azure Monitor experience should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "the Agent details view",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "the Application map",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "live metrics",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Metrics Explorer",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "references": [],
+    "category": "3.1 Analyze, monitor, and tune AI-powered business solutions",
+    "explanation": "The Agent details view provides an agent-centric experience that surfaces execution runs, latency, token usage, cost signals, and errors across multiple agents in one place. Metrics Explorer focuses on raw metrics and charts but does not provide aggregated agent-level run or cost insights. The Application map visualizes service dependencies rather than agent behavior. Live metrics shows real-time request and failure rates but does not expose agent runs, token usage, or cost information."
+  },
+  {
+    "question_text": "A company uses a Microsoft Copilot Studio agent in Microsoft Teams to create and update refund cases in Microsoft Dataverse and then run a legacy refund process on Azure virtual machines.\n\nCredentials for the legacy system are stored in Azure Key Vault.\n\nYou need to ensure that refund execution runs as a predefined sequence of steps, supports high concurrency and large payloads, and is monitored independently from the conversation.\n\nWhich integration pattern should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "agent flows for the refund execution",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "HTTP requests from Copilot Studio conversation nodes",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Microsoft Bot Framework skills registered in Copilot Studio",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Microsoft Power Platform connectors invoked directly as tools",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "references": [],
+    "category": "2.1 Design AI and agents for business solutions",
+    "explanation": "Agent flows support deterministic, multi-step execution with built-in monitoring, secure connection handling, and scalability for large data volumes and concurrent runs. Conversation-node HTTP calls and direct tool invocation are not designed for long-running or high-throughput integrations, and Bot Framework skills do not address the orchestration of backend business processes."
+  },
+  {
+    "question_text": "A company uses Microsoft Dynamics 365 Customer Service as its CRM system.\n\nThe company deploys Microsoft 365 Copilot for Service to customer service representatives who use Microsoft Teams and Outlook.\n\nUsers can open the Copilot for Service app in Outlook, but saving emails and appointments to Dynamics 365 Customer Service fails for most users.\n\nYou need to configure the CRM environment to support saving Outlook emails and appointments.\n\nWhat should you do?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Enable transcription in the Microsoft Teams admin center.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Create a Teams app setup policy to install and pin the Copilot for Service app..",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Enable the Salesforce connector in the environment data loss prevention (DLP) policy.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Turn on server-side synchronization with Microsoft Exchange Online and approve and test user mailboxes.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "2.3 Orchestrate configuration for prebuilt agents and apps",
+    "explanation": "Server-side synchronization with Exchange Online is required for Dynamics 365 to track and save emails and appointments from Outlook, and approving and testing user mailboxes ensures proper configuration; Enabling a Salesforce connector is unrelated to Dynamics 365 Customer Service; Installing or pinning the app in Teams does not enable email and calendar synchronization; Transcription settings in Teams are unrelated to Outlook email and appointment tracking."
+  },
+  {
+    "question_text": "A company has a Microsoft Copilot Studio agent that handles sales and service requests. The agent can create customer cases in Dynamics 365 Customer Service and sales opportunities in Dynamics 365 Sales.\n\nThe company wants to validate an end-to-end scenario in which a user asks the agent to create a customer case and, in a later message in the same conversation, asks the agent to create a related sales opportunity by referencing the previously created case.\n\nYou need to implement an automated, repeatable test to validate that the agent correctly maintains context and completes the scenario across multiple user messages.\n\nWhich type of Copilot Studio Kit test should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "multi-turn",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "plan validation",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "response match",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "topic match",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "references": [],
+    "category": "3.2 Manage the testing of AI-powered business solutions",
+    "explanation": "Multi-turn tests validate that an agent maintains conversational context and correctly completes scenarios that span multiple user messages, making them appropriate for testing end-to-end flows across turns. Plan validation tests focus on tool selection within a single orchestrated plan, response match tests validate output text, and topic match tests validate routing rather than conversational continuity."
+  },
+  {
+    "question_text": "A company has an internal support process that has the following requirements:\n\n- Employees submit requests using natural language.\n\n- Requests must be evaluated against policy rules.\n\n- Follow-up actions must be executed automatically when conditions are met.\n\n- Exceptions must be routed for human review.\n\nYou need to assess the appropriate AI approach to meet the requirements.\n\nWhat should you do?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Use RAG to answer questions and handle decisions that have separate workflows.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Use an agent to handle conversational input, apply decision logic, and automate actions.",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Use traditional analytics models to classify requests and trigger batch processing jobs.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Use a large language model (LLM) only to generate responses and rely on humans to perform all actions.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "references": [],
+    "category": "1.1 Analyze requirements for AI-powered business solutions",
+    "explanation": "An agent is appropriate because the requirements combine conversational interaction, rule-based evaluation, automated task execution, and human-in-the-loop exception handling in a single flow. A standalone language model does not perform actions, RAG focuses on knowledge retrieval rather than decision-making and automation, and traditional analytics models are better suited for batch classification than interactive, real-time workflows."
+  },
+  {
+    "question_text": "A company has a Microsoft Copilot Studio agent that uses Azure OpenAI to generate responses and retrieves grounding data from Microsoft Dataverse.\n\nMultiple users can modify the agent's configurations, including the model behavior and data access settings. The company's security team requires that changes affecting the model be traced back to specific users.\n\nYou need to recommend a solution that protects the model by providing accountability for the configuration changes.\n\nWhat should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Use Microsoft Purview to audit any modifications to the agent.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Store agent secrets in Azure Key Vault by using environment variables.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Create data loss prevention (DLP) policies to block non-required connectors.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Enable comprehensive auditing in Microsoft Power Platform and the Dataverse environment.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "3.4 Design responsible AI, security, governance, risk management, and compliance",
+    "explanation": "Enabling comprehensive auditing in Power Platform and the Dataverse environment provides an auditable record of which users changed model-related configurations and data access settings, supporting accountability and protection of the model's integrity. DLP policies, continuous access evaluation, and secret storage meet other security concerns but do not provide traceability for configuration changes that affect the model behavior."
+  },
+  {
+    "question_text": "A company uses Microsoft Dynamics 365 Sales and Microsoft Dynamics 365 Customer Service in separate Microsoft Power Platform production environments. Each environment is deployed to a different geographic region and uses a separate Microsoft Dataverse database.\n\nUsers on the sales team must see support case statuses, and users on the customer service team must see current opportunity values. The solution must provide cross-environment data access without replicating data and must minimize integration components and administrative overhead.\n\nYou need to recommend a solution design that meets the requirements.\n\nWhat should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Keep separate production environments per region and sync data by using scheduled integration flows.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Create a shared production environment that has a unified Dataverse database and migrate the data to the database.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Keep separate production environments per region and use Dataverse virtual tables to access data across the environments.",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "Move both Microsoft Dynamics 365 Sales and Microsoft Dynamics 365 Customer Service solutions into a single production environment and restrict access by using security roles.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "c"
+    ],
+    "references": [],
+    "category": "1.2 Design overall AI strategy for business solutions",
+    "explanation": "Using Dataverse virtual tables enables real-time access to data across environments without replicating it, while maintaining separate regional environments and minimizing integration complexity and administrative overhead; Moving both applications into a single environment removes regional separation and may violate geographic or organizational constraints; Syncing data by using scheduled integration flows introduces data duplication and additional integration overhead; Creating a shared environment and migrating data increases complexity and contradicts the requirement to avoid data replication."
+  },
+  {
+    "question_text": "A company has a Microsoft Copilot Studio agent. The agent invokes a Microsoft Power Automate flow that calls an Azure function. The solution sends telemetry to Azure Monitor Application Insights.\n\nUsers intermittently receive generic errors, but no failures appear in Application Insights. An investigation shows that the function catches exceptions and returns HTTP 200 responses with error details in the payload.\n\nYou need to configure Application Insights to detect and alert on the failures.\n\nWhat should you do?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Create availability tests for the function.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Create CPU utilization alerts for the function.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Disable custom telemetry and rely on Copilot Studio analytics.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Configure Application Insights to capture exceptions from the function.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "3.1 Analyze, monitor, and tune AI-powered business solutions",
+    "explanation": "Capturing exceptions in Application Insights ensures that failures currently hidden by handled errors are observable and can trigger alerts. CPU metrics and availability tests monitor infrastructure health rather than application-level failures, and disabling telemetry removes visibility into application-level failures."
+  },
+  {
+    "question_text": "A company has a customer service agent built in Microsoft Foundry that calls an Azure OpenAI model and a knowledge API. Telemetry and online evaluation scores are sent to Azure Monitor Application Insights.\n\nUsers report intermittent off-topic responses, even though latency and token usage remain normal.\n\nYou confirm that the issue occurs only when the knowledge API is used.\n\nYou need to detect quality regressions in production within five minutes of occurrence and automatically notify the on-call team.\n\nWhat should you configure?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "an Azure Monitor workbook that visualizes evaluation scores and knowledge API usage over time",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "an Azure Monitor log alert that detects dependency failures on the knowledge API based on HTTP status codes",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "an Azure Monitor metric alert in Application Insights based on the average evaluation scores across all requests",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "an Azure Monitor log alert in Application Insights that detects low evaluation scores when the knowledge API is used and triggers an action group",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "3.1 Analyze, monitor, and tune AI-powered business solutions",
+    "explanation": "A log-based alert in Application Insights can correlate low evaluation scores specifically with calls to the knowledge API and triggers an action group within minutes, enabling rapid detection of targeted quality regressions. Metric alerts based on overall averages, dependency alerts based only on HTTP status codes, and workbooks for visualization do not provide precise, automated detection and notification in this scenario."
+  },
+  {
+    "question_text": "A company uses Azure OpenAI On Your Data in Microsoft Foundry and an Azure AI Search index. The assistant has in_scope = true configured and must include citations.\n\nTelemetry shows that the assistant sometimes reports that information is unavailable, even though the content exists in the indexed documents.\n\nYou confirm that relevant chunks are retrieved but not included in the model prompt.\n\nYou need to increase the likelihood that retrieved chunks are included in the prompt by changing only inferencing parameters.\n\nWhat should you do?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Reduce the strictness parameter.",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "Change the embedding model used during ingestion.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Switch the search query type to vectorSemanticHybrid.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Recreate the Azure AI Search index with smaller chunks.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "references": [],
+    "category": "3.1 Analyze, monitor, and tune AI-powered business solutions",
+    "explanation": "The strictness parameter controls how aggressively retrieved content is filtered before being included in the prompt sent to the model. Reducing strictness increases recall and enables more relevant chunks to pass through without modifying documents, embeddings, or the search index. Changing embeddings or chunking requires re-ingestion, and query type affects retrieval rather than post-retrieval filtering."
+  },
+  {
+    "question_text": "A company has a customer-support agent built in Microsoft Foundry. The agent uses RAG and a shared Azure AI Search index. The index contains both internal HR documents and public content and is populated by a governed data source that has auditable access controls.\n\nSecurity testing shows that unauthorized users can retrieve internal documents through prompt injection attacks.\n\nYou need to recommend a solution to mitigate this risk. The solution must meet the following requirements:\n\n- Continue to use a shared search index.\n\n- Prevent unauthorized content from being returned.\n\n- Maintain auditable governance over the grounding data.\n\nWhat should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Rely on Foundry content filters to block sensitive HR information in responses.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Implement security trimming on Azure AI Search queries based on a caller's ID or role.",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Increase the model context window and provide full internal documents as grounding data.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Replace the shared search index with direct queries to the source systems for each request.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "references": [],
+    "category": "3.4 Design responsible AI, security, governance, risk management, and compliance",
+    "explanation": "Applying security trimming ensures that only documents the caller is authorized to access are retrieved as grounding data, preventing unauthorized content from influencing responses even during prompt injection attacks. Increasing the model context and relying on output filtering do not enforce authorization at retrieval time, and bypassing the shared index violates the design requirement to continue using a centralized search index."
+  },
+  {
+    "question_text": "A company has a customer service agent that calls an Azure OpenAI model and sends traces to Azure Monitor Application Insights.\n\nAfter a recent release, average response latency and monitoring costs have increased. Telemetry shows higher token usage per request and a large increase in ingested trace data.\n\nYou need to reduce monitoring costs, while retaining enough telemetry to analyze token usage and latency trends.\n\nWhat should you do?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Switch the model deployment to a developer tier.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Disable tracing and rely only on Microsoft Cost Management.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Increase the model context window to reduce the logging volume.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Configure sampling and retention policies in Application Insights.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "3.1 Analyze, monitor, and tune AI-powered business solutions",
+    "explanation": "Configuring sampling and retention policies reduces the telemetry ingestion volume and costs, while preserving sufficient data to analyze trends in token usage and latency. Disabling tracing removes critical observability, increasing the context size increases token and cost pressure, and changing deployment tiers does not address data ingestion monitoring."
+  },
+  {
+    "question_text": "A company has a Microsoft Copilot Studio agent that is deployed in Microsoft Teams and sends telemetry to Azure Monitor Application Insights.\n\nTelemetry from production conversations and from the Copilot Studio test canvas is stored in the same resource and queried by using KQL.\n\nYour daily unique-user metrics are inflated because test canvas conversations are included.\n\nYou need to exclude test-canvas telemetry from monitoring queries.\n\nWhat should you add to the KQL query?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "filter on user_id where it is not empty",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "filter on customDimensions['type'] == 'message'",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "filter on customDimensions['designMode'] == false",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "filter on customDimensions['channelId'] != 'msteams'",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "c"
+    ],
+    "references": [],
+    "category": "3.1 Analyze, monitor, and tune AI-powered business solutions",
+    "explanation": "Copilot Studio test canvas conversations are marked with designMode = true in Application Insights telemetry. Filtering for events where designMode is false removes test traffic, while preserving production usage. Channel, message type, and user ID filters do not reliably distinguish test canvas activity from real user interactions."
+  },
+  {
+    "question_text": "A company plans to use a Microsoft Copilot Studio agent that calls a custom generative AI model hosted in Microsoft Foundry to draft customer-facing responses. The model is invoked through a single REST endpoint and is used by a Copilot Studio agent in Microsoft Teams and SharePoint Online.\n\nThe company's security requirements mandate Microsoft Entra authentication without API keys and network isolation for the Foundry hub and workspace configuration.\n\nYou need to recommend a model deployment option that meets the requirements.\n\nWhat should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Deploy the model as a batch deployment.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Consume the model directly from the Foundry playground.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Deploy the model as a standard Models-as-a-Service (MaaS) deployment.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Deploy the model as a managed compute deployment to an Azure Machine Learning online endpoint.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "2.2 Design extensibility of AI solutions",
+    "explanation": "Managed compute deployments in Azure Machine Learning support Microsoft Entra authentication and enable network isolation through hub and workspace networking controls. Standard MaaS deployments rely on key-based authentication, and playground or batch options do not meet the runtime and security requirements."
+  },
+  {
+    "question_text": "A company has a Microsoft Copilot Studio agent that is grounded in Microsoft SharePoint Online content and uses a Microsoft Power Automate flow to create and update cases in Dynamics 365 Customer Service.\n\nThe agent's responses vary due to prompt rephrasing and model updates.\n\nYou need to recommend an automated evaluation approach that can score non-deterministic responses for relevance and groundedness and can be rerun to detect regressions.\n\nWhich evaluation method should you recommend for the test cases in a Copilot Studio test set?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "performance and load testing",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "quality test method",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "similarity test method",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "text match test method",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "references": [],
+    "category": "3.2 Manage the testing of AI-powered business solutions",
+    "explanation": "The quality test method evaluates responses based on relevance, groundedness, and overall quality without relying on exact text matching, making it suitable for non-deterministic Copilot outputs and regression testing. Text match and similarity methods depend on expected wording and are less effective when responses vary, while performance and load testing measure scalability rather than response quality."
+  },
+  {
+    "question_text": "A finance operations team uses a Microsoft Copilot Studio agent.\n\nAnalytics shows 8,000 successful runs per month, and each run replaces an eight-minute manual task.\n\nThe environment has the Disable money saving rules setting enabled, so Analytics reports time savings but does not calculate monetary savings.\n\nYou need to calculate monthly productivity savings in dollars for an ROI analysis while complying with the environment setting.\n\nWhat should you do?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Change the environment configuration so that Analytics reports monetary savings directly.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Use analytics trends in Copilot Studio to infer monetary savings without external calculations.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Estimate productivity savings by modeling reduced Azure consumption costs during the same period.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Export time-savings data from Analytics and calculate monetary savings externally by applying appropriate labor cost assumptions.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "1.3 Evaluate the costs and benefits of an AI-powered business solution",
+    "explanation": "Exporting time-savings data and calculating monetary savings externally allows the team to derive ROI while respecting the Disable money saving rules setting, which prevents in-platform monetary calculations; Changing the environment configuration violates the requirement to comply with the existing setting; Modeling reduced Azure consumption costs does not reflect productivity savings from replaced manual tasks; Inferring monetary savings without applying explicit labor cost assumptions does not produce accurate or defensible ROI calculations."
+  },
+  {
+    "question_text": "A company uses Microsoft Dynamics 365 Sales with a custom model-driven app that sellers use instead of the standard Sales Hub app.\n\nThe sellers cannot open the Copilot immersive experience from the custom app navigation.\n\nYou need to make Copilot available directly in the custom app.\n\nWhat should you do in the app configuration?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Add the Copilot control to the opportunity form.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Enable Copilot features in the Sales Insights settings.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Include the Copilot immersive experience in the app site map.",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "Assign the Copilot for Sales security role to all the sellers.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "c"
+    ],
+    "references": [],
+    "category": "2.1 Design AI and agents for business solutions",
+    "explanation": "Including the Copilot immersive experience in the app site map makes the Copilot interface accessible within the custom model-driven app navigation; Enabling Copilot features in Sales Insights controls feature availability but does not expose the Copilot experience in a custom app; Adding a control to a form does not provide access to the immersive Copilot experience; Assigning security roles grants permissions but does not add Copilot to the app navigation."
+  },
+  {
+    "question_text": "A company has a Microsoft Copilot Studio agent in Microsoft Teams that answers HR policy questions by grounding responses in Microsoft SharePoint Online documents.\n\nSome documents are labeled as Highly Confidential and only certain HR users are authorized to access the documents.\n\nTesting shows that the agent can process and summarize Highly Confidential files. The company's security team requires that the agent NOT process content labeled Highly Confidential, even when a user has access.\n\nYou need to recommend a security solution to ensure that the agent enforces this restriction.\n\nWhat should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Enable Copilot Studio transcript logging in Microsoft Dataverse.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Create a Microsoft Purview retention policy scoped to Copilot experiences.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Rely on user context so that SharePoint permissions and sensitivity labels are honored.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Create a Microsoft Purview data loss prevention (DLP) policy scoped to Microsoft 365 Copilot that blocks the processing of SharePoint content labeled Highly Confidential.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "3.4 Design responsible AI, security, governance, risk management, and compliance",
+    "explanation": "A Microsoft Purview DLP policy scoped to Microsoft 365 Copilot can prevent Copilot from processing SharePoint content that has specific sensitivity labels, enforcing agent-level security controls regardless of user permissions. Retention policies and transcript logging do not restrict content processing, and relying on user context alone does not meet the requirement to block Highly Confidential data from being handled by the agent."
+  },
+  {
+    "question_text": "A company has an internal support agent built in Microsoft Foundry. The agent routes requests to Azure OpenAI models and an Azure AI Search-based RAG knowledge base.\n\nThe agent is used by multiple business units, and the company regularly updates model deployments, routing configurations, and RAG data sources.\n\nCurrent monitoring captures Azure OpenAI metrics only and does NOT provide an audit trail for changes.\n\nYou need to design a solution that provides a centralized audit trail for changes to models and data. The solution must support governance and compliance across business units.\n\nWhat should you include in the solution?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Azure AI Content Safety filters on each model deployment",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Azure API Management in front of the agent endpoint that has configuration change logging enabled",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Azure OpenAI diagnostic settings that send logs and metrics to Azure Monitor",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Azure Policy restrictions on Azure OpenAI model deployments",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "references": [],
+    "category": "3.4 Design responsible AI, security, governance, risk management, and compliance",
+    "explanation": "Adding Azure API Management in front of the agent endpoint provides a centralized control plane where configuration, routing, and integration changes affecting models and data can be logged and audited across business units. The other options focus on safety enforcement or resource-level telemetry and do not create a unified audit trail for changes."
+  },
+  {
+    "question_text": "A company uses Microsoft Dynamics 365 Finance and Operations apps, including Dynamics 365 Supply Chain Management.\n\nYou need to implement conversational, in-app assistance provided by Copilot that is available across the finance and operations apps.\n\nWhich Copilot feature should you enable to meet the requirement?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "generative help and guidance",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "review and accept changes to confirmed purchase orders",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "workflow history summary",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "workload insights with Copilot in the Warehouse Management mobile app",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "references": [],
+    "category": "2.3 Orchestrate configuration for prebuilt agents and apps",
+    "explanation": "Generative help and guidance provides conversational, in-app assistance across finance and operations apps through Copilot; Reviewing and accepting changes to purchase orders is a task-specific feature and does not provide general conversational assistance; Workflow history summary provides insights into workflows but does not deliver interactive Copilot assistance; Workload insights in the Warehouse Management mobile app is limited to a specific application and does not provide a cross-application Copilot experience."
+  },
+  {
+    "question_text": "A company has a customer-service agent built in Microsoft Copilot Studio that handles steady daily traffic and periodic month-end spikes. The agent uses RAG with Azure AI Search and Azure OpenAI models, and a model router directs simple requests to lower-cost models.\n\nThe company's Finance team requires predictable monthly costs for baseline usage, while the Operations team must handle spikes without failed requests.\n\nYou need to recommend a billing and deployment approach that meets both requirements.\n\nWhat should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Use a single endpoint and reduce the prompt size during spikes.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Use and consumption-based billing only rely on budget alerts during spikes.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Use provisioned throughput for all traffic and block requests that exceed capacity.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Use provisioned throughput for baseline traffic and add a consumption-based endpoint for overflow.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "1.3 Evaluate the costs and benefits of an AI-powered business solution",
+    "explanation": "Provisioned throughput provides predictable costs for steady workloads, while a consumption-based endpoint absorbs burst traffic without request failures. Consumption-only billing lacks predictability, blocking excess traffic impacts reliability, and prompt reduction does not address capacity or cost control."
+  },
+  {
+    "question_text": "A company uses Dynamics 365 Supply Chain Management with the Warehouse Management mobile app. Copilot features are available.\n\nWarehouse supervisors want in-app AI assistance that summarizes warehouse work and workforce data.\n\nYou need to enable a Copilot feature that provides insights into work headers, pick lines, receiving lines, and available workforce directly in the Warehouse Management mobile app.\n\nWhich Copilot feature should you configure?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "AI summaries with Copilot",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Analyze demand plans with Copilot",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Generative help and guidance",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Workload insights with Copilot",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "2.3 Orchestrate configuration for prebuilt agents and apps",
+    "explanation": "Workload insights with Copilot is designed to surface operational insights such as available work, pick and receiving lines, and workforce availability directly within the Warehouse Management mobile app. The other Copilot features focus on planning analysis, general assistance, or text summarization and do not provide operational workload insights in the warehouse context."
+  },
+  {
+    "question_text": "A company uses Microsoft Dataverse as a primary data store for an AI solution. The solution also requires customer data from SAP and Oracle systems.\n\nAn agent must generate recommendations based on a unified dataset that is no more than 24 hours old. The consolidated data must also be available for use by other AI systems. Real-time updates from SAP and Oracle are NOT required.\n\nYou need to recommend an integration approach that consolidates only the required data into Dataverse on a predictable schedule.\n\nWhich integration pattern should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "data consolidation pattern",
+        "is_correct": true
+      },
+      {
+        "letter": "b",
+        "text": "event driven pattern",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "instant trigger pattern",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "service-oriented architecture pattern",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "a"
+    ],
+    "references": [],
+    "category": "1.1 Analyze requirements for AI-powered business solutions",
+    "explanation": "A data consolidation pattern is appropriate when data from multiple external systems must be periodically extracted, transformed, and loaded into a central store to meet freshness requirements without real-time integration. Instant trigger and event driven patterns are designed for near-real-time (NRT) updates, which are not required, and a service-oriented architecture does not provide scheduled consolidation or a unified data store for downstream AI systems."
+  },
+  {
+    "question_text": "A company deploys a Microsoft Copilot Studio agent on its public-facing website to generate natural language responses to customer questions. The agent uses an Azure OpenAI GPT model.\n\nThe company's development team wants to evaluate model output quality at scale and detect regressions across model versions. The company has anonymized production prompt logs available.\n\nYou need to recommend a testing approach that supports the requirements.\n\nWhat should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Perform tone and safety validation only.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Perform manual testing on a small set of prompts after each model update.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Implement deterministic unit tests that expect identical outputs for identical prompts.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Implement automated batch testing by using production prompt logs with quality scoring, and rerun tests for each new model version.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "3.2 Manage the testing of AI-powered business solutions",
+    "explanation": "Automated batch testing using production prompt logs enables large-scale evaluation of realistic inputs, supports quantitative quality scoring, and allows consistent regression testing across model versions; Deterministic unit tests are not suitable because LLM outputs are non-deterministic; Manual testing on a small prompt set does not scale and cannot reliably detect regressions; Tone and safety validation alone does not evaluate overall response quality or detect regressions."
+  },
+  {
+    "question_text": "A company uses Microsoft 365 for daily work.\n\nEmployees manually summarize vendor emails and attachments into a monthly report, and real-time purchase order status is available only through a third-party procurement system by using an API.\n\nYou need to recommend an AI-powered solution that reduces manual effort, can retrieve real-time purchase order status, and meets enterprise security requirements. Leadership requires measurable ROI in the first quarter and minimal total cost of ownership (TCO). The solution must meet the following requirements:\n\n- Be deployed within six weeks.\n\n- Be accessible from Microsoft 365 (for example, Microsoft Teams).\n\n- Support real-time actions against the procurement API.\n\nWhat should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "For all finance operations, build a multi-agent solution from scratch.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Extend Microsoft 365 Copilot by building a plugin or connector to the procurement API.",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Build a custom copilot by using Azure OpenAI and Azure AI Search in a standalone web app.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Adopt Microsoft 365 Copilot only and require users to access the procurement system separately.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "references": [],
+    "category": "1.3 Evaluate the costs and benefits of an AI-powered business solution",
+    "explanation": "Extending Microsoft 365 Copilot provides the fastest time to value, integrates directly into existing Microsoft 365 workflows, supports secure real-time API access, and minimizes development and operational costs. Building custom or multi-agent solutions increases time, cots, and risk, while using Copilot without an extension does not meet the functional requirements."
+  },
+  {
+    "question_text": "A company operates two AI agents. One is built in Microsoft Copilot Studio, and the other is built in Microsoft Foundry. Both agents send telemetry to the same Azure Monitor Application Insights resource.\n\nYou need to monitor trends over time in request volume, failure rate, and average latency across both agents, and configure alerts when thresholds are exceeded.\n\nWhich Azure Monitor tool should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "the Agent details view",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Azure Monitor Metrics Explorer",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Azure Monitor workbooks",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "the Microsoft Copilot Studio analytics dashboard",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "references": [],
+    "category": "3.1 Analyze, monitor, and tune AI-powered business solutions",
+    "explanation": "Metrics Explorer enables the analysis of aggregated telemetry, such as request volume, latency, and failure rates over time, and supports alerting when thresholds are exceeded. The Agent details views focus on individual executions, Copilot Studio analytics does not cover Foundry agents, and Azure Monitor workbooks are useful for visualization but do not provide metric-based alerting."
+  },
+  {
+    "question_text": "A company uses Microsoft Dynamics 365 Customer Service and Microsoft 365 Copilot.\n\nYou plan to deploy a support agent that meets the following requirements:\n\n- Runs multi-step workflows to create and update cases\n\n- Calls a third-party ticketing system by using connectors\n\n- Can be shared across the company's support team by using controlled publishing and lifecycle management\n\nYou need to recommend an authoring approach that meets the requirements.\n\nWhat should you recommend?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Use the Agent Builder in Microsoft 365 Copilot.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Use the full version of Copilot Studio in the standalone web portal.",
+        "is_correct": true
+      },
+      {
+        "letter": "c",
+        "text": "Build the agent by using Azure AI Bot Service with Bot Framework skills and custom APIs.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Implement the workflows by using Microsoft Power Automate and call the workflows from simple conversation topics.",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "b"
+    ],
+    "references": [],
+    "category": "2.1 Design AI and agents for business solutions",
+    "explanation": "The full version of Copilot Studio provides the multi-step workflows, connector integration, environment governance, and controlled publishing required for a team-wide support agent. Azure AI Bot Service and Power Automate-only approaches lack unified agent lifecycle management, and the Agent Builder is intended for lightweight personal or team scenarios without connector support or complex workflows."
+  },
+  {
+    "question_text": "A company uses a Microsoft Copilot Studio agent grounded in an Azure AI Search index built from policy documents.\n\nPolicy content is updated and deleted frequently. In-place index updates have caused downtime and stale results.\n\nYou need to update the indexing approach to maintain availability and allow rollback.\n\nWhich deployment strategy should you use?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "Update the existing index in place.",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Query the source documents at runtime.",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Fine-tune the model by using updated policy content.",
+        "is_correct": false
+      },
+      {
+        "letter": "d",
+        "text": "Build a new index and switch queries after validation.",
+        "is_correct": true
+      }
+    ],
+    "correct_answers": [
+      "d"
+    ],
+    "references": [],
+    "category": "2.1 Design AI and agents for business solutions",
+    "explanation": "A side-by-side index deployment allows validation before switching traffic, prevents downtime, and supports rollback if issues are detected. In-place updates risk availability, querying source documents does not provide a stable grounding layer, and fine-tuning does not address the timely removal of deleted content from search results."
+  },
+  {
+    "question_text": "A company has frontline users who work in Microsoft Teams. Procedures and manuals are stored in Microsoft SharePoint Online.\n\nYou need to recommend a conversational agent solution for Teams. The solution must meet the following requirements:\n\n- Run multi-step workflows.\n\n- Enable business makers to manage day-to-day conversational updates.\n\n- Call a non-Microsoft line-of-business (LOB) system by using the system's REST API.\n\n- Enforce connector governance and environment-level policies for external system access.\n\nWhich platform should you recommend to build the agent?",
+    "options": [
+      {
+        "letter": "a",
+        "text": "GPUs and containers that host a custom model and custom agent runtime",
+        "is_correct": false
+      },
+      {
+        "letter": "b",
+        "text": "Microsoft 365 Copilot Agent Builder",
+        "is_correct": false
+      },
+      {
+        "letter": "c",
+        "text": "Microsoft Copilot Studio",
+        "is_correct": true
+      },
+      {
+        "letter": "d",
+        "text": "Microsoft Foundry basic setup with a declarative agent",
+        "is_correct": false
+      }
+    ],
+    "correct_answers": [
+      "c"
+    ],
+    "references": [],
+    "category": "1.2 Design overall AI strategy for business solutions",
+    "explanation": "Copilot Studio supports building conversational agents for Teams that can ground responses in SharePoint content, orchestrate multi-step workflows, and call external REST APIs through governed connectors, while enabling business makers to manage conversational updates. Microsoft 365 Copilot Agent Builder lacks advanced workflow and governance capabilities, Foundry is focused on centralized agent and model orchestration rather than low-code conversational agents, and a fully custom GPU-hosted solution does not align with the governance and maker-ownership requirements."
+  }
+]
